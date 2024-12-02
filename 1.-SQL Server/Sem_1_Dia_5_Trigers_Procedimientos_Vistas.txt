@@ -1,0 +1,509 @@
+﻿use EjerciciosTich
+
+create table saldos(
+id int primary key identity (1,1),
+Nombre varchar(150) not null,
+salado decimal(9,2)
+)
+
+
+insert into saldos (Nombre,salado) values ('Don Ricardo',10500.50)
+insert into saldos (Nombre,salado) values ('Don Gustavo',105500.50)
+insert into saldos (Nombre,salado) values ('Don Rolando',20500.50)
+insert into saldos (Nombre,salado) values ('Don Miguel Uribe Gaitan Buena Vista',1100500.50)
+insert into saldos (Nombre,salado) values ('Don Raul',100.50)
+insert into saldos (Nombre,salado) values ('Don Eusebio',5780.50)
+
+select * from saldos
+
+create table Transacciones(
+id int primary key identity(1,1),
+idOrigen int,
+idDestino int,
+monto decimal(9,2)
+)
+
+alter table Transacciones
+add constraint fk_origen_saldos
+FOREIGN key  (idOrigen)
+references saldos(id)
+
+alter table Transacciones
+add constraint fk_destino_saldos
+FOREIGN key  (idDestino)
+references saldos(id)
+
+
+CREATE or alter PROCEDURE TransaccionMonetaria
+    @CuentaOrigen INT,
+    @CuentaDestino INT,
+    @Cantidad DECIMAL(18, 2)
+AS
+BEGIN
+	
+	DELETE FROM Transacciones WHERE idDestino IS NULL
+	DELETE FROM Transacciones WHERE monto < 0
+
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Verificar saldo suficiente en la cuenta origen
+        DECLARE @SaldoOrigen DECIMAL(18, 2);
+        SELECT @SaldoOrigen = salado FROM saldos WHERE ID = @CuentaOrigen;
+
+        IF @SaldoOrigen >= @Cantidad
+        BEGIN
+            -- Restar la cantidad de la cuenta origen
+            UPDATE saldos SET salado = salado - @Cantidad WHERE ID = @CuentaOrigen;
+
+            -- Sumar la cantidad a la cuenta destino
+            UPDATE saldos SET salado = salado + @Cantidad WHERE ID = @CuentaDestino;
+            COMMIT;
+            PRINT 'Transacci�n completada exitosamente.';
+        END
+        ELSE
+        BEGIN
+            ROLLBACK;
+            PRINT 'Saldo insuficiente en la cuenta origen.';
+        END
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        PRINT 'Error en la transacci�n. Se ha realizado un rollback.';
+		THROW 51000,'Error al realizar la transferencia', 1;
+    END CATCH;
+END;
+
+
+
+
+--------------------------
+exec TransaccionMonetaria 5,2,6
+select * from Transacciones
+select * from saldos
+
+delete from Transacciones 
+DBCC CHECKIDENT (Transacciones, RESEED,0)
+
+
+create or alter trigger logTransaccion
+on saldos
+after update
+as
+SET NOCOUNT ON
+begin
+
+INSERT INTO Transacciones(
+idOrigen,monto
+)
+SELECT 
+i.id,
+d.salado - i.salado
+FROM INSERTED i
+inner join deleted d
+on i.id = d.id
+left join Transacciones tra
+on i.id = tra.idOrigen
+
+
+UPDATE Transacciones SET
+idDestino = (select top 1
+idOrigen
+from Transacciones tra1
+order by tra1.id desc)
+WHERE id = (SELECT MAX(id) FROM Transacciones) - 1; 
+
+end
+
+
+drop trigger afterTrans
+
+
+create or alter trigger afterTrans
+on Transacciones
+after update
+as
+SET NOCOUNT ON
+begin
+
+delete from Transacciones where id = case
+when monto < 0 then ((SELECT MAX(id) FROM Transacciones))
+end
+
+end
+
+
+select sum(CASE WHEN idDestino IS NULL THEN 1 ELSE 0 END) from Transacciones
+
+
+----------------------------------------------------------------------
+
+create or alter view vAlumnos
+as select
+alu.id as Id,
+alu.nombre as Nombre,
+alu.primerApellido as 'Apellido Paterno',
+alu.segundoApellido as 'Apellido Materno',
+correo as Correo,
+telefono as Telefono,
+curp as Curp,
+esta.nombre as Estado,
+ea.nombre as Estatus
+from Alumnos alu
+inner join Estados esta
+on alu.idEstadoOrigen = esta.id
+inner join EstatusAlumnos ea
+on alu.idEstatus = ea.id
+
+select * from vAlumnos
+
+-----------------------------------------------------------------------------------
+
+create or alter proc consultarEstados (@idEstado int)
+as
+begin
+
+if @idEstado <= 0 or @idEstado > ((SELECT MAX(id) FROM EstadosCurp))
+begin 
+select id as Id, Nombre as Estado from EstadosCurp
+end
+else
+begin
+select id as Id, Nombre as Estado from EstadosCurp where id = @idEstado
+end
+
+end
+
+exec consultarEstados 5
+
+-----------------------------------------------------------------------------------
+
+create or alter proc consultarEstatusAlumnos (@idEstatus int)
+as
+begin
+
+if @idEstatus <= 0 or @idEstatus > ((SELECT MAX(id) FROM EstatusAlumnos))
+begin 
+select id as Id, nombre as Estatus from EstatusAlumnos
+end
+
+else
+begin
+select id as Id, nombre as Estatus from EstatusAlumnos where id = @idEstatus
+end
+
+end
+
+
+exec consultarEstatusAlumnos -1
+
+
+-----------------------------------------------------------------------------------
+
+
+
+create or alter proc consultarAlumnos (@idAlumno int)
+as
+begin
+
+if @idAlumno <= 0 or @idAlumno > ((SELECT MAX(id) FROM vAlumnos))
+begin 
+select * from vAlumnos
+end
+
+else
+begin
+select * from vAlumnos where id = @idAlumno
+end
+
+end
+
+
+exec consultarAlumnos 10
+
+-------------------------------------------------------------------------------------
+
+create or alter proc consultarEAlumnos (@idAlumno int)
+as
+begin
+
+if @idAlumno <= 0 or @idAlumno > ((SELECT MAX(id) FROM Alumnos))
+begin 
+select * from Alumnos
+end
+
+else
+begin
+select * from Alumnos where id = @idAlumno
+end
+
+end
+
+
+exec consultarEAlumnos 2
+
+------------------------------------------------------------------------------------------------------------
+
+
+create or alter proc actualizarEstatusAlumnos (@idAlumno int, @idEstatus int)
+as
+begin
+
+if (select count(id)
+from Alumnos
+where id = @idAlumno) = 1 and 
+(select count(id)
+from EstatusAlumnos
+where id = @idEstatus) = 1
+
+begin 
+update Alumnos set idEstatus = @idEstatus where id = @idAlumno
+
+select
+alu.nombre as Alumno,
+ea.nombre
+from Alumnos alu
+inner join EstatusAlumnos ea
+on alu.idEstatus = ea.id
+where alu.id = @idAlumno
+
+end
+
+
+
+else
+
+begin
+Print 'Verifique sus datos'
+end
+
+end
+
+
+EXEC actualizarEstatusAlumnos 100,3
+
+
+---------------------------------------------------------------------------
+
+CREATE OR ALTER PROC agregarAlumnos(@Nombre nvarchar(60), @pap nvarchar(50), @sap nvarchar(60), @cor varchar(80), @tel nchar(10), @fn date, @curp char(18), @sueldo decimal(9,2), @idestado int, @idest smallint)
+as
+begin
+insert into Alumnos (nombre,primerApellido,segundoApellido,correo,telefono,fechaNacimiento,curp,sueldo,idEstadoOrigen,idEstatus)
+values (@Nombre,@pap,@sap,@cor, @tel, @fn, @curp, @sueldo, @idestado, @idest)
+
+declare @id int = (SELECT top 1 MAX(id) FROM Alumnos)
+
+print convert(varchar,@id)
+
+end
+
+
+exec agregarAlumnos 'Piter', 'panda', 'manchado', 'piterson@gmail.com', '7732586972','1999/3/25', 'PAMP990325HOCNNT09', 96568.21, 19, 5 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE OR ALTER PROC actualizarAlumnos(@id int, @Nombre nvarchar(60), @pap nvarchar(50), @sap nvarchar(60), @cor varchar(80), @tel nchar(10), @fn date, @curp char(18), @sueldo decimal(9,2), @idestado int, @idest smallint)
+as
+begin
+
+declare @ContaReg int = (select count(id)
+from Alumnos
+where id = @id)
+
+if @ContaReg >= 1
+
+begin
+update Alumnos set
+nombre = @Nombre,
+primerApellido = @pap,
+segundoApellido = @sap,
+correo = @cor,
+telefono = @tel,
+fechaNacimiento = @fn,
+curp = @curp,
+sueldo = @sueldo,
+idEstadoOrigen = @idestado,
+idEstatus = @idest
+where id = @id
+
+print 'Cantidad de registros actualizados: ' + convert(varchar, @ContaReg)
+
+end
+
+else
+begin
+print 'Alumno no encontrado'
+end
+
+end
+
+
+exec actualizarAlumnos 200,'Piter2', 'panda', 'manchado', 'piterson@gmail.com', '7732586972','1999/3/25', 'PAMP990325HOCNNT09', 96568.21, 19, 5 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+create or alter proc eliminarAlumnos(@idAlumno int)
+as
+begin
+
+declare @validar int = (select count(id)
+from Alumnos
+where id = @idAlumno)
+
+begin try
+BEGIN TRANSACTION;
+
+
+        IF @validar >= 1
+        BEGIN
+            delete from Alumnos where id = @idAlumno
+            COMMIT;
+            PRINT 'Datos eliminados correctamente';
+        END
+        
+		ELSE
+        BEGIN
+            ROLLBACK;
+            PRINT 'Error al eliminar, no se encontro el alumno';
+        END
+end try
+
+
+begin catch
+ PRINT 'Error en la transacci�n. Se ha realizado un rollback.';
+ THROW 51000,'Error al realizar la transferencia', 1;
+end catch
+
+end
+
+exec eliminarAlumnos 23
+select * from Alumnos
+
+-------------------------------------------------------------------------------------------------------------------
+
+select * from AlumnosBaja
+
+create or alter trigger Trigger_EliminarAlumnos
+on Alumnos
+after Delete
+as
+SET NOCOUNT ON
+begin
+
+INSERT INTO AlumnosBaja
+(nombre,
+primerApellido,
+segundoApellido,fechaBaja)
+
+SELECT d.nombre,
+d.primerApellido,
+d.segundoApellido,
+GETDATE()
+
+FROM deleted d;
+
+end
+
+------------------------------------------------------------------------------------------------------------------------------
+use EjerciciosTich
+
+BACKUP DATABASE EjerciciosTich 
+TO DISK = 'C:\\Program Files\\Microsoft SQL Server\\MSSQL15.MSSQLSERVER\\MSSQL\\Backup\\EjerciciosTich.bak' 
+WITH FORMAT, MEDIANAME = 'SQLServerBackups', NAME = 'RespaldoInstitutoTich'; 
+GO
+
+------------------------------------------------------------------------------------------------------------------------------
+
+create database PruebasTich
+use PruebasTich
+
+RESTORE DATABASE PruebasTich
+FROM DISK = 'C:\\Program Files\\Microsoft SQL Server\\MSSQL15.MSSQLSERVER\\MSSQL\\Backup\\EjerciciosTich.bak'
+
+WITH REPLACE,
+MOVE 'EjerciciosTich' TO 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\PruebasTich.mdf',
+MOVE 'EjerciciosTich_log' TO 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\PruebasTich_log.ldf';
+GO
+
+select * from Alumnos
+
+use EjerciciosTich
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+use PruebasTich
+
+create or alter proc spEliminaAlumnosCurso (@Curso varchar(150))
+as
+begin
+
+declare @Validar int = (
+select distinct
+count (alu.id)
+from CursosAlumnos ca
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+inner join cursos cu
+on ca.idCurso = cu.id
+inner join catcursos cc
+on cu.idcatcurso = cc.id
+where cc.nombre = @Curso
+)
+
+
+if @Validar >= 1
+begin
+
+declare @idAlu int 
+
+while(@Validar != 0)
+begin
+
+select distinct
+@idAlu = (alu.id)
+from CursosAlumnos ca
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+inner join cursos cu
+on ca.idCurso = cu.id
+inner join catcursos cc
+on cu.idcatcurso = cc.id
+where cc.nombre = @Curso
+
+delete from Alumnos where id = @idAlu
+
+set @validar = @validar - 1
+
+end
+
+end
+
+end
+
+
+select * from catcursos
+
+exec spEliminaAlumnosCurso 'POO'
+
+
+select
+alu.nombre as Alumno,
+cc.nombre as Curso
+from CursosAlumnos ca
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+inner join cursos cu
+on ca.idCurso = cu.id
+inner join catcursos cc
+on cu.idcatcurso = cc.id
+where cc.nombre = 'POO'
+
+use EjerciciosTich
+
+select
+*
+from cursos
+inner join CatCursos cc
+on cursos.idCatCurso = cc.id

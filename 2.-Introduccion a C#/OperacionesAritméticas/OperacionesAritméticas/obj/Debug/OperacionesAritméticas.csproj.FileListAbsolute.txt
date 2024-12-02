@@ -1,0 +1,8 @@
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\OperacionesAritméticas\OperacionesAritméticas\obj\Debug\OperacionesAritméticas.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\OperacionesAritméticas\OperacionesAritméticas\obj\Debug\OperacionesAritméticas.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\OperacionesAritméticas\OperacionesAritméticas\obj\Debug\OperacionesAritméticas.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\OperacionesAritméticas\OperacionesAritméticas\bin\Debug\OperacionesAritméticas.exe.config
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\OperacionesAritméticas\OperacionesAritméticas\bin\Debug\OperacionesAritméticas.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\OperacionesAritméticas\OperacionesAritméticas\bin\Debug\OperacionesAritméticas.pdb
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\OperacionesAritméticas\OperacionesAritméticas\obj\Debug\OperacionesAritméticas.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\OperacionesAritméticas\OperacionesAritméticas\obj\Debug\OperacionesAritméticas.pdb

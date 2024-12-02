@@ -1,0 +1,11 @@
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\bin\Debug\PuntoVenta.exe.config
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\bin\Debug\PuntoVenta.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\bin\Debug\PuntoVenta.pdb
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\obj\Debug\PuntoVenta.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\obj\Debug\PuntoVenta.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\obj\Debug\PuntoVenta.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\obj\Debug\PuntoVenta.csproj.CopyComplete
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\obj\Debug\PuntoVenta.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\PuntoVenta\PuntoVenta\obj\Debug\PuntoVenta.pdb

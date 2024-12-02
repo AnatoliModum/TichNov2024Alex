@@ -1,0 +1,73 @@
+
+
+select 
+esta.nombre as Estado,
+COUNT(al.id) as "Total Alumnos"
+from Alumnos al
+inner join Estados esta
+on al.idEstadoOrigen = esta.id
+group by (esta.nombre)
+
+
+select * from EstatusAlumnos
+select * from Alumnos
+
+select
+ea.nombre as Estado,
+count(al.id) as Total
+from Alumnos al
+inner join EstatusAlumnos ea
+on al.idEstatus = ea.id
+group by (ea.nombre)
+
+
+
+
+SELECT 
+'Calificaciones Alumnos' as 'Resumen Calificaciones' ,
+COUNT(calificacion) as Total,
+MAX	(calificacion) as Maxima,
+MIN	(calificacion) as Minima,
+AVG(calificacion) as Promedio
+FROM CursosAlumnos
+
+
+Select * from CursosAlumnos
+select * from CatCursos
+select * from Cursos
+
+select
+cc.nombre as Curso,
+cu.fechaInicio as 'Fecha de Inicio',
+cu.fechaTermino as 'Fecha de Termino',
+COUNT(ca.calificacion) as Total,
+MAX(ca.calificacion) as Maxima,
+Min(ca.calificacion) as Minima,
+AVG(ca.calificacion) as Promedio
+from CursosAlumnos ca
+inner join Cursos cu
+on ca.idCurso = cu.id
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+group by cc.nombre,cu.fechaInicio,cu.fechaTermino
+
+
+Select * from CursosAlumnos
+select * from Alumnos
+select * from Estados
+
+select
+esta.nombre as Estado,
+COUNT(ca.calificacion) as Total,
+MAX(ca.calificacion) as Maxima,
+MIN(ca.calificacion) as Minima,
+AVG(ca.calificacion) as Promedio
+from CursosAlumnos ca
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+inner join Estados esta
+on alu.idEstadoOrigen = esta.id
+group by (esta.nombre)
+HAVING AVG(ca.calificacion) > 6
+
+

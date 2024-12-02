@@ -1,0 +1,8 @@
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\Interfaces\Interfaces\bin\Debug\Interfaces.exe.config
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\Interfaces\Interfaces\bin\Debug\Interfaces.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\Interfaces\Interfaces\bin\Debug\Interfaces.pdb
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\Interfaces\Interfaces\obj\Debug\Interfaces.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\Interfaces\Interfaces\obj\Debug\Interfaces.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\Interfaces\Interfaces\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\Interfaces\Interfaces\obj\Debug\Interfaces.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\Interfaces\Interfaces\obj\Debug\Interfaces.pdb

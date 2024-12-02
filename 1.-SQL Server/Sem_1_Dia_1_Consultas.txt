@@ -1,0 +1,36 @@
+select 
+primerApellido as "Apellido Paterno",
+segundoApellido as "Apellido materno",
+nombre as "Nombre",
+telefono as "Telefono",
+correo as "Correo"
+from Alumnos
+
+select 
+nombre as "Nombre",
+primerApellido as "Apellido Paterno",
+segundoApellido as "Apellido Materno",
+rfc as "RFC",
+cuotaHora as "Cuota por Hora"
+from Instructores
+
+select 
+clave as "Clave",
+nombre as "Nombre",
+descripcion as "Descripcion",
+horas as "Horas"
+from CatCursos
+
+select TOP 5 * from Alumnos order by fechaNacimiento DESC
+
+CREATE DATABASE Ejercicios
+
+select * into 
+Ejercicios.dbo.Alumnos -- dbo <- Palabra reservada
+from Alumnos
+
+select * into 
+Ejercicios.dbo.Instructores
+from Instructores
+
+use EjerciciosTich

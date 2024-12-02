@@ -1,0 +1,188 @@
+-----------------Funcion 1
+
+create function SUMA( @a int, @b int)
+returns int
+as
+Begin
+
+declare @resultado int = @a + @b
+
+return @resultado
+End
+
+
+Select dbo.SUMA(9,1) as Resultado
+
+
+
+
+-----------------Funcion 2
+
+
+create function Genero(@CURP Varchar(50))
+returns varchar(50)
+as
+Begin
+
+declare @SexoCurp varchar(50) = IIF(substring(@CURP, 11,1) = 'H', 'Hombre', ( IIF (substring(@CURP, 11,1) = 'M', 'Mujer', 'Invalido' ) ))
+
+return @Sexocurp
+End
+
+select
+nombre as Alumno,
+dbo.Genero(curp) as Sexo
+from Alumnos
+
+
+
+-----------------Funcion 3
+
+create function GetFechaNacimiento(@CURP varchar (50))
+returns table
+as
+return
+select
+CONVERT(date,substring(@CURP, 5,6)) as 'Fecha de Nacimiento',
+IIF(DATEPART(YEAR,CONVERT(date,substring(@CURP, 5,6))) BETWEEN 1900 AND 1999, 'Noventas', 'Dosmiles') as 'Siglo de nacimiento',
+DATEPART(MONTH,CONVERT(date,substring(@CURP, 5,6))) as 'Mes de Nacimiento',
+DATEPART(DAY,CONVERT(date,substring(@CURP, 5,6))) as 'Dia de Nacimiento'
+
+
+Select * from dbo.GetFechaNacimiento('DIAE280418HOCSVL07')
+
+
+
+-----------------Funcion 4
+
+create table EstadosCurp(
+id int primary key not null,
+Nombre VARCHAR(50) NOT NULL,
+CURP VARCHAR(50) NOT NULL
+)
+
+
+Select * from EstadosCurp
+
+
+create function GetidEstado(@CURP VARCHAR(50))
+RETURNS VARCHAR(50)
+AS
+Begin
+
+DECLARE @CodEst varchar(10) = substring(@CURP, 12,2)
+DECLARE @ESTADO VARCHAR(50) 
+
+select @ESTADO = Nombre
+from EstadosCurp 
+where CURP = @CodEst
+
+return @ESTADO
+End
+
+
+select
+nombre as Alumno,
+curp as Curp,
+dbo.GetidEstado(curp) as Estado
+from Alumnos
+
+-----------------Funcion 5
+
+select dbo.Calculadora(0,0,'/')
+
+Create function Calculadora (@a int, @b int, @Ope char(10))
+returns int
+as
+begin
+
+declare @resultado int = 0
+
+set @resultado = case
+when @Ope = '+' then @a + @b
+when @Ope = '-' then @a - @b
+when @Ope = '*' then @a * @b
+when @Ope = '%' then @a % @b
+WHEN @Ope = '/' THEN
+	CASE 
+	WHEN @b = 0 THEN 0 
+	ELSE @a / @b 
+	END
+
+else 0000 
+END
+
+return @resultado
+end
+
+
+-----------------Funcion 6
+
+
+create function GetHonorarios(@idInstructor smallint, @idCurso smallint)
+returns decimal (9,2)
+as
+begin
+
+declare @Honorarios decimal
+declare @HorasCurso decimal
+
+select
+@HorasCurso = cc.horas
+from Cursos cu
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+where cu.id = @idCurso
+
+select @Honorarios = cuotaHora from Instructores
+
+declare @TotalPagar decimal = @Honorarios * @HorasCurso
+
+return @TotalPagar
+end
+
+
+
+
+select
+cu.id as 'Id Curso',
+cc.nombre as Curso,
+cc.horas as Duracion
+from Cursos cu
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+
+select
+id,
+nombre as 'Instructor',
+cuotaHora as 'Honorarios por Hora'
+from Instructores
+
+select dbo.GetHonorarios(2,2) as 'Total a pagar'
+
+
+
+-----------------Funcion 7
+
+create function GetEdad(@Nacimiento date,@FechaDeseada date)
+returns decimal(4,2)
+as
+begin
+declare @edadActual decimal(4,2) = (DATEDIFF(DAY,@Nacimiento,@FechaDeseada)) / 365
+
+return @edadActual
+end
+
+drop function GetEdad
+
+SELECT
+nombre as Nombre,
+dbo.GetEdad(fechaNacimiento,GETDATE()) AS Edad,
+CONVERT(decimal(9,2),((DATEPART(DAY,fechaNacimiento)) - (DATEPART(DAY,GETDATE())) / 365)) as Edad2,
+DATEDIFF(DAY,fechaNacimiento,GETDATE()) as Edad3,
+fechaNacimiento as 'Fecha de nacimiento'
+FROM Alumnos
+
+
+
+select * from Alumnos

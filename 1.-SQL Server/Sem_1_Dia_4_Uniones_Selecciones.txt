@@ -1,0 +1,152 @@
+select
+'Instructor' as Tipo,
+nombre as Nombre,
+primerApellido as 'Apellido Paterno',
+segundoApellido as 'Apellido Materno',
+DATEPART(MONTH,fechaNacimiento) as 'Mes de nacimiento',
+DATEPART(DAY,fechaNacimiento) as 'Dia de Nacimiento'
+from Instructores
+union
+select
+'Alumno' as Tipo,
+nombre as Nombre,
+primerApellido as 'Apellido Paterno',
+segundoApellido as 'Apellido Materno',
+DATEPART(MONTH,fechaNacimiento) as 'Mes de nacimiento',
+DATEPART(DAY,fechaNacimiento) as 'Dia de Nacimiento'
+from Alumnos
+order by Tipo, [Mes de nacimiento], [Dia de Nacimiento]
+
+
+
+
+
+------update 1
+update Alumnos SET idEstatus = 6
+where idEstatus = 8
+
+select * from Alumnos
+select * from EstatusAlumnos
+
+Select
+* 
+from Alumnos alu
+WHERE alu.idEstatus = 6
+ORDER BY alu.idEstatus DESC
+--------------------------------
+
+
+----------Update 2 ----------------
+update Alumnos set segundoApellido = UPPER(segundoApellido)
+
+select * from Alumnos
+--------------------------------------------
+
+--------update 3-----------------------------
+update Alumnos set segundoApellido = STUFF(LOWER(segundoApellido), 1,1 , UPPER(LEFT(segundoApellido,1)))
+
+select * from Alumnos
+--------------------------------------------
+
+
+
+-------------update 4 ----------------------
+select
+nombre as Instructor,
+telefono as Telefono,
+SUBSTRING(curp,12,2) as 'Entidad Curp'
+from Instructores
+
+update Instructores set telefono = STUFF(telefono, 1 , 2 , '58')
+where SUBSTRING(curp,12,2) = 'DF'
+
+-----------------------------------------------
+
+
+---------------update 5 -----------------------------
+select Distinct
+alu.nombre as Alumno,
+esta.nombre as Estado,
+ca.calificacion as Promedio,
+IIF (alu.idEstadoOrigen = 19, 'Check Oaxa', (IIF(alu.idEstadoOrigen = 21, 'Check Quere', esta.nombre))) AS EstadoCompro
+from CursosAlumnos ca
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+inner join Estados esta
+on alu.idEstadoOrigen = esta.id
+order by EstadoCompro 
+
+
+select * from Estados
+where nombre = 'Querétaro' or nombre = 'Oaxaca' --Querétaro -> 21 ///// Oaxaca -> 19
+
+update CursosAlumnos set calificacion = calificacion + 1
+where idAlumno IN (select distinct
+ca.idAlumno
+from CursosAlumnos ca
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+inner join Estados esta
+on alu.idEstadoOrigen = esta.id
+where esta.id = 19 or esta.id = 21) and CursosAlumnos.calificacion < 10
+
+
+---------update 6 ------------------
+
+select distinct
+ins.nombre as Instructor,
+ins.cuotaHora as Salario
+from CursosInstructores ci
+inner join Instructores ins
+on ci.idInstructor = ins.id
+where idCurso = 2
+
+
+Select * from Instructores
+select * from CursosInstructores --- Curso Asp -> 2
+
+update Instructores set cuotaHora = cuotaHora + ((cuotaHora)*.10)
+where id IN (
+select distinct
+idInstructor
+from CursosInstructores
+where idCurso = 2
+)
+
+
+---------update 7 ------------------
+use InstitutoTich2
+use EjerciciosTich
+
+select * from AlumnosTodos
+
+SELECT *
+INTO InstitutoTich2.dbo.AlumnosTodos
+FROM Alumnos
+
+SELECT *
+INTO InstitutoTich2.dbo.AlumnosJali
+FROM Alumnos
+where idEstadoOrigen = 13 -- <- id de Jalisco
+
+Select * from AlumnosJali
+
+use InstitutoTich2
+
+
+select * from AlumnosJali
+
+update AlumnosJali set telefono = STUFF(telefono,1,2,'33')
+
+select * from AlumnosTodos
+
+SELECT *
+INTO AlumnosTodos
+FROM AlumnosJali
+
+Select * from AlumnosTodos order by idEstadoOrigen
+
+update AlumnosTodos set telefono = AlumnosJali.telefono 
+from AlumnosTodos
+inner join AlumnosJali
+on AlumnosTodos.id = AlumnosJali.id

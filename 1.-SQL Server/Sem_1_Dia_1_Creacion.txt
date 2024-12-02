@@ -1,0 +1,151 @@
+create database EjerciciosTich
+
+use EjerciciosTich
+
+create database InstitutoTich2
+use InstitutoTich2
+
+create table Estados(
+id int primary key identity(1,1),
+nombre nvarchar(100)
+)
+
+create table EstatusAlumnos(
+id smallint primary key identity(1,1),
+clave char(10) not null,
+nombre nvarchar(100)
+)
+
+create table CatCursos(
+id smallint primary key identity(1,1),
+clave  nvarchar(15) not null,
+nombre nvarchar(50) not null,
+descripcion nvarchar(1000),
+horas tinyint not null,
+idPreRequisito smallint,
+activo bit not null
+)
+
+alter table CatCursos
+add constraint fk_PreRequisito
+foreign key (idPreRequisito)
+references CatCursos(id)
+
+create table Cursos(
+id smallint primary key identity(1,1),
+idCatCurso smallint,
+fechaInicio date,
+fechaTermino date,
+activo bit
+)
+
+alter table Cursos
+add constraint fk_CatCurso
+foreign key (idCatCurso)
+references CatCursos(id)
+on delete cascade
+on update cascade
+
+exec sp_helpconstraint Cursos
+
+create table Alumnos(
+id int primary key identity(1,1),
+nombre nvarchar(60) not null,
+primerApellido nvarchar(50) not null,
+segundoApellido nvarchar(50),
+correo varchar(80) not null,
+telefono nchar(10) not null,
+fechaNacimiento date not null,
+curp char(18) not null,
+sueldo decimal(9,2),
+idEstadoOrigen int not null,
+idEstatus smallint not null
+)
+
+alter table Alumnos
+add constraint fk_Estado
+foreign key (idEstadoOrigen)
+references Estados(id)
+on delete cascade
+on update cascade 
+
+alter table Alumnos
+add constraint fk_Estatus
+foreign key (idEstatus)
+references EstatusAlumnos(id)
+on delete cascade
+on update cascade
+
+exec sp_helpconstraint Alumnos
+
+Create table Instructores(
+id smallInt primary key identity(1,1),
+nombre nvarchar(60) not null,
+primerApellido nvarchar(50) not null,
+segundoApellido nvarchar(50),
+correo varchar(80) not null,
+telefono nchar(10) not null,
+fechaNacimiento date not null,
+rfc char(13) not null,
+curp char(18) not null,
+cuotaHora decimal(9,2) not null,
+activo bit not null
+)
+
+create table CursosAlumnos (
+id int primary key identity(1,1),
+idCurso smallint not null,
+idAlumno int not null,
+fechaInscripcion date not null,
+fechaBaja date,
+calificacion tinyint
+)
+
+alter table CursosAlumnos
+add constraint fk_Curso
+foreign key (idCurso)
+references Cursos(id)
+on delete cascade
+on update cascade
+
+alter table CursosAlumnos
+add constraint fk_Alumno
+foreign key (idAlumno)
+references Alumnos(id)
+on delete cascade
+on update cascade
+
+exec sp_helpconstraint CursosAlumnos
+
+create table CursosInstructores(
+id int primary key identity(1,1),
+idCurso smallint not null,
+idInstructor int not null,
+fechaContratacion date
+)
+
+alter table CursosInstructores
+add constraint fk_Curso_CI
+foreign key (idCurso)
+references Cursos(id)
+on delete cascade
+on update cascade
+
+alter table CursosInstructores alter column idInstructor smallint
+
+alter table CursosInstructores
+add constraint fk_Instructor_CI
+foreign key (idInstructor)
+references Instructores(id)
+on delete cascade
+on update cascade
+
+create table AlumnosBaja(
+id int primary key identity (1,1),
+nombre nvarchar(60) not null,
+primerApellido nvarchar(50) not null,
+segundoApellido nvarchar(50),
+fechaBaja datetime not null
+)
+
+

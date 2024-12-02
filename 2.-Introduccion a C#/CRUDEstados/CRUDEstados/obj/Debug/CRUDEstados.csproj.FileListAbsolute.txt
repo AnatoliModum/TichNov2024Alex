@@ -1,0 +1,8 @@
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\CRUDEstados\CRUDEstados\bin\Debug\CRUDEstados.exe.config
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\CRUDEstados\CRUDEstados\bin\Debug\CRUDEstados.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\CRUDEstados\CRUDEstados\bin\Debug\CRUDEstados.pdb
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\CRUDEstados\CRUDEstados\obj\Debug\CRUDEstados.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\CRUDEstados\CRUDEstados\obj\Debug\CRUDEstados.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\CRUDEstados\CRUDEstados\obj\Debug\CRUDEstados.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\CRUDEstados\CRUDEstados\obj\Debug\CRUDEstados.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\CRUDEstados\CRUDEstados\obj\Debug\CRUDEstados.pdb

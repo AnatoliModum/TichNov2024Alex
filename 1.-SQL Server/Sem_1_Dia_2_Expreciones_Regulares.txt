@@ -1,0 +1,174 @@
+
+select * from Alumnos where primerApellido like 'Mendoza' OR segundoApellido like 'Mendoza'
+
+select 
+al.nombre as Alumno,
+ea.nombre as Estatus
+from Alumnos al
+inner join EstatusAlumnos ea
+on al.idEstatus = ea.id
+where EA.nombre LIKE 'En Capacitación'
+
+
+Select 
+ins.nombre as Instructor,
+DATEDIFF(YEAR,ins.fechaNacimiento,GETDATE()) as edad
+from Instructores ins
+where DATEDIFF(YEAR,ins.fechaNacimiento,GETDATE()) > 30
+
+
+
+select
+alu.nombre as Alumno,
+DATEDIFF(YEAR,alu.fechaNacimiento,GETDATE()) as Edad
+from Alumnos alu
+where DATEDIFF(YEAR,alu.fechaNacimiento,GETDATE()) between 20 and 25 
+
+
+
+select * from Alumnos
+select * from Estados
+select * from EstatusAlumnos
+
+select
+alu.nombre as Alumno,
+esta.nombre as Estado,
+ea.nombre as Estatus
+from Alumnos alu
+inner join Estados esta
+on alu.idEstadoOrigen = esta.id
+inner join EstatusAlumnos ea
+on alu.idEstatus = ea.id
+where (esta.nombre like 'Oaxaca' and ea.nombre like 'En Capacitación') or
+(esta.nombre like 'Campeche' and ea.nombre like 'Prospecto')
+
+
+
+
+select 
+nombre as Alumno,
+correo as Correo
+from Alumnos
+where correo like '%@gmail.com'
+
+
+select
+nombre as Alumno,
+fechaNacimiento as Cumpleaños
+from Alumnos
+where DATEPART(MONTH,fechaNacimiento) = 3 
+
+
+select
+nombre as Alumno,
+DATEDIFF(year,fechaNacimiento,GETDATE()) as Edad,
+DATEDIFF(year,fechaNacimiento,GETDATE())+5 as 'Edad en 5 años' 
+from Alumnos
+where DATEDIFF(year,fechaNacimiento,GETDATE())+5 >= 30
+
+
+select
+nombre as Alumno
+from Alumnos
+where LEN(nombre) > 10
+
+
+select
+nombre as Alumno,
+curp as Curp
+from Alumnos
+where curp like '%[0-9]'
+
+
+
+select 
+alu.nombre as Alumno,
+ca.calificacion as Calificacion
+from CursosAlumnos ca
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+where ca.calificacion > 8
+
+
+select
+alu.nombre as Alumno,
+ea.nombre as Estatus,
+alu.sueldo as Salario
+from Alumnos alu
+inner join EstatusAlumnos ea
+on alu.idEstatus = ea.id
+where alu.sueldo > 15000 and (ea.nombre like 'laborando' or ea.nombre like 'liberado')
+order by alu.sueldo desc
+
+
+select
+nombre as Alumno,
+DATEPART(YEAR,fechaNacimiento) as 'Año de Nacimiento',
+primerApellido as Apellido
+from Alumnos
+where DATEPART(YEAR,fechaNacimiento) between 1990 and 1995 and
+primerApellido like '[B,C,Z]%'
+
+
+
+select
+nombre as Alumno,
+fechaNacimiento as 'Fecha de Nacimiento',
+curp as Curp,
+CONVERT(date,SUBSTRING(curp,5,6)) as 'Fecha Curp'
+from Alumnos
+where (CONVERT(date,SUBSTRING(curp,5,6))) != fechaNacimiento
+
+
+
+Select
+nombre as Alumno,
+primerApellido as 'Apellido Paterno',
+fechaNacimiento as 'Mes de nacimiento',
+DATEDIFF(year,fechaNacimiento,GETDATE()) as Edad
+from Alumnos
+where primerApellido like 'A%' and
+DATEPART(MONTH,fechaNacimiento) = 4 and
+DATEDIFF(year,fechaNacimiento,GETDATE()) between 21 and 30
+
+
+select
+nombre as Alumno 
+from Alumnos 
+where nombre like '%LUIS%'
+
+
+
+
+
+
+select
+cc.nombre as Curso,
+cu.fechaInicio as 'Fecha de Inicio',
+cu.fechaTermino as 'Fecha de Termino',
+COUNT(idAlumno) as 'Cantidad de Alumnos',
+avg(calificacion) as Promedio
+from CursosAlumnos ca
+inner join Cursos cu
+on ca.idCurso = cu.id
+inner join CatCursos cc
+on ca.idCurso = cc.id
+where DATEPART(YEAR, cu.fechaInicio) = 2024 and  DATEPART(YEAR, cu.fechaTermino) = 2024
+group by cc.nombre,cu.fechaInicio,cu.fechaTermino
+
+
+
+
+select
+esta.nombre as Estado,
+count(alu.id) as Total,
+AVG(ca.calificacion) as Promedio,
+avg(alu.sueldo) as 'Sueldo Promedio'
+from Alumnos alu
+inner join Estados esta
+on alu.idEstadoOrigen = esta.id
+inner join CursosAlumnos ca
+on ca.idAlumno = alu.id
+where ca.calificacion > 6 
+group by (esta.nombre)
+HAVING AVG(ca.calificacion) > 6 AND count(alu.id) > 1

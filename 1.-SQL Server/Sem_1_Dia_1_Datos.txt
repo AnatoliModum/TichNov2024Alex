@@ -1,0 +1,156 @@
+use EjerciciosTich
+
+select * from CatCursos
+
+insert into CatCursos (clave,nombre,descripcion,horas,idPreRequisito,activo) 
+values ('VA51V6EA','DESARROLLO WEB','APRENDE A DESARROLLAR EN WEB',15,NULL,1)
+
+insert into CatCursos (clave,nombre,descripcion,horas,idPreRequisito,activo) 
+values ('E65G1WE','ASP.NET','APRENDE A DESARROLLAR EN ASP.NET',10,1,1)
+
+insert into CatCursos (clave,nombre,descripcion,horas,idPreRequisito,activo) 
+values ('JAVAS124','JAVASCRIPT','APRENDE A DESARROLLAR EN JAVASCRIPT',20,1,1)
+
+insert into CatCursos (clave,nombre,descripcion,horas,idPreRequisito,activo) 
+values ('POOPYTH123','PYTHON','APRENDE A DESARROLLAR EN PYTHON',20,NULL,1)
+
+insert into CatCursos (clave,nombre,descripcion,horas,idPreRequisito,activo) 
+values ('POO123','POO','APRENDE A DESARROLLAR EN POO',20,4,1)
+
+delete from CatCursos where id > 6
+
+SELECT * FROM Cursos
+
+INSERT INTO Cursos (idCatCurso,fechaInicio,fechaTermino,activo)
+values (1,'25/10/2024','25/11/2024',1)
+
+INSERT INTO Cursos (idCatCurso,fechaInicio,fechaTermino,activo)
+values (2,'30/10/2024','22/11/2024',1)
+
+INSERT INTO Cursos (idCatCurso,fechaInicio,fechaTermino,activo)
+values (3,'30/01/2024','22/02/2024',1)
+
+INSERT INTO Cursos (idCatCurso,fechaInicio,fechaTermino,activo)
+values (4,'20/02/2024','22/03/2024',0)
+
+INSERT INTO Cursos (idCatCurso,fechaInicio,fechaTermino,activo)
+values (5,'30/01/2024','22/02/2024',1)
+
+INSERT INTO Cursos (idCatCurso,fechaInicio,fechaTermino,activo)
+values (1,'20/02/2024','22/03/2024',0)
+
+select * from Alumnos
+
+SET IDENTITY_INSERT [dbo].[Alumnos] ON 
+
+INSERT [dbo].[Alumnos] ([nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [sueldo], [idEstadoOrigen], [idEstatus]) VALUES ( N'Christian Josue ', N'Gonzalez', N'Lozano', N'christian@gmail.com', N'4922153353', CAST(N'1996-06-19' AS Date), N'GOLC960619HZSNZH08', NULL, 20, 4)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (1, N'Marcelo Isai a', N'García', N'Mirón', N'marcelo@outlook.com', N'9911362600', CAST(N'1997-12-12' AS Date), N'MADA971212HVZRMN04', 29, 6)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (2, N'Oliver Alexis', N'Martínez', N'Estudillo', N'alexis@gmail.com', N'8897877417', CAST(N'1996-04-18' AS Date), N'DIAE960418HOCSVL07',19, 6)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (3, N'Oscar', N'Mendoza', N'García', N'omscar@outlook.es', N'7711589568', CAST(N'1994-04-07' AS Date), N'RUVJ940407HOCSSN03',29, 4)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (4, N'Edgar', N'Martínez', N'Espinoza', N'edgargmail.com', N'5528356144', CAST(N'1996-05-23' AS Date), N'DOML960323HMNMTS00', 12, 5)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (5, N'Rodrigo', N'Tolentino', N'Martínez', N'rodrigo@gmail.com', N'4421436224', CAST(N'1998-03-13' AS Date), N'TOMR980313HHGLRD06',13, 5)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (6, N'Jesiel', N'García', N'Pérez', N'jesiel@gmail.com', N'3317901341', CAST(N'1990-11-08' AS Date), N'GAPJ901108HHGRRS00',13, 5)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (7, N'Christian Josue ', N'Gonzalez', N'Lozano', N'christian@gmail.com', N'4922153353', CAST(N'1996-06-19' AS Date), N'GOLC960619HZSNZH08', 32, 4)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (8, N'Luis Enrique', N'Lopez ', N'Cruz', N'luis@gmail.com', N'2235700644', CAST(N'1997-07-15' AS Date), N'LOCL970715HGTPRS04', 16, 5)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (9, N'Rolando', N'Marquez', N'Hernandez', N'rolando@gmail.com', N'1168329969', CAST(N'1997-03-08' AS Date), N'MAHR97030815HRL600', 15, 4)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (10, N'Jesús Yotecatl', N'Miranda', N'Espinosa', N'jesus@gmail.com', N'2213335247', CAST(N'1997-06-14' AS Date), N'MIEJ970614HMCRSS05', 15, 4)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (11, N'Cecilia', N'Cruz', N'Luna', N'cecilia@outlook.com', N'3317052376', CAST(N'1997-08-08' AS Date), N'CULC970808MPLRNC02', 21, 4)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (12, N'Baldomero', N'Gómez', N'García', N'baldomero@gmail.com', N'4419055010', CAST(N'2000-11-08' AS Date), N'GOGB001108HPLMRLA2', 21, 4)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (13, N'Rubén', N'Rojas', N'Mantilla', N'ruben@outlook.com', N'5594228277', CAST(N'1997-01-17' AS Date), N'ROMR910117HVZJNB00',  30, 4)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (14, N'Ana Patricia', N'Apatiga ', N'Olguín', N'patricia@gmail.com', N'6614913002', CAST(N'1998-06-23' AS Date), N'AAOA980623MHGPLN03', 13, 3)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (15, N'Bryan Adiel ', N'Arroyo ', N'Tavera', N'brayan@gmail.com', N'7719034047', CAST(N'1998-04-02' AS Date), N'AOTB980402HHGRVR05',  13, 3)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (16, N'Carlos Arath', N'Serrano', N'Berna', N'carlos@gmail.com', N'8878893014', CAST(N'2000-03-05' AS Date), N'SEBC000305HQTRRRA5', 22, 3)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (17, N'Edith', N'Rasgado', N'Sarabia', N'edith@gmail.com', N'9911777500', CAST(N'1994-04-29' AS Date), N'RASE940429MOCSRD00', 20, 3)
+INSERT [dbo].[Alumnos] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [curp], [idEstadoOrigen], [idEstatus]) VALUES (18, N'Víctor', N'Marín', N'Pérez', N'victor@gmail.com', N'2215066253', CAST(N'1998-06-04' AS Date), N'MAPV980604HDFRRC01',  15, 3)
+SET IDENTITY_INSERT [dbo].[Alumnos] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[Instructores] ON 
+
+INSERT [dbo].[Instructores] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [rfc], [curp], [cuotaHora], [activo]) VALUES (1, N'Oscar', N'López', N'Osorio', N'olopez@ti-capitalhumano.com', N'7226181450', CAST(N'1984-08-03' AS Date), N'LOOO840803S08', N'LOOO840803HMCPSS08', CAST(110.00 AS Decimal(9, 2)), 1)
+INSERT [dbo].[Instructores] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [rfc], [curp], [cuotaHora], [activo]) VALUES (2, N'Jorge', N'Valdivia', N'Rosas', N'jvaldivia@ti-capitalhumano.com', N'5561040510', CAST(N'1964-01-26' AS Date), N'VARJ640126R00', N'VARJ640126HDFLSR00', CAST(100.00 AS Decimal(9, 2)), 1)
+INSERT [dbo].[Instructores] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [rfc], [curp], [cuotaHora], [activo]) VALUES (3, N'Luis', N'Vázquez', N'Cuj', N'luisvazquez@ti-capitalhumano.com', N'5540612941', CAST(N'1974-10-11' AS Date), N'VACL741011JS5', N'VACL741011HTCZJS05', CAST(80.00 AS Decimal(9, 2)), 1)
+INSERT [dbo].[Instructores] ([id], [nombre], [primerApellido], [segundoApellido], [correo], [telefono], [fechaNacimiento], [rfc], [curp], [cuotaHora], [activo]) VALUES (4, N'José', N'Morales', N'Narváez', N'jose.morales@ti-capitalhumano.com', N'5511506288', CAST(N'1984-12-31' AS Date), N'MONM941231N07', N'MONM941231HCCRRN07', CAST(70.00 AS Decimal(9, 2)), 1)
+SET IDENTITY_INSERT [dbo].[Instructores] OFF
+GO
+
+select * from Instructores
+
+select * from CursosAlumnos
+
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (1,1,'10/2/2024','10/4/2024',5)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (1,2,'10/2/2024','10/4/2024',8)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (2,3,'10/3/2024','10/5/2024',5)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (2,4,'10/3/2024','10/5/2024',9)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (3,5,'10/3/2024','10/5/2024',7)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (3,6,'10/3/2024','10/5/2024',7)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (5,8,'10/3/2024','10/5/2024',9)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (5,9,'10/3/2024','10/5/2024',6)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (6,10,'10/4/2024','10/6/2024',8.3)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (6,11,'10/4/2024','10/6/2024',7.3)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (7,12,'10/5/2024','10/7/2024',3.3)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (7,13,'10/5/2024','10/7/2024',8.5)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (1,14,'10/2/2024','10/4/2024',5)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (1,15,'10/2/2024','10/4/2024',8)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (2,16,'10/3/2024','10/5/2024',5)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (2,17,'10/3/2024','10/5/2024',9)
+insert into CursosAlumnos (idCurso,idAlumno,fechaInscripcion,fechaBaja,calificacion)
+values (3,18,'10/3/2024','10/5/2024',7)
+
+select * from Cursos
+select * from Alumnos
+select * from Instructores
+select * from CursosInstructores
+
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (1,1,'10/01/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (1,2,'10/01/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (2,3,'10/02/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (2,4,'10/02/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (3,1,'10/01/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (3,2,'10/01/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (5,3,'10/02/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (5,4,'10/02/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (6,1,'10/01/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (6,2,'10/01/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (7,3,'10/02/2024')
+insert into CursosInstructores (idCurso,idInstructor,fechaContratacion)
+values (7,4,'10/02/2024')
+
+
+select * from Alumnos
+select * from CatCursos
+select * from Cursos
+select * from CursosAlumnos
+select * from CursosInstructores
+select * from EstatusAlumnos
+select * from Instructores
+
+select * from INFORMATION_SCHEMA.CONSTRAINT_TABLE_USAGE
+

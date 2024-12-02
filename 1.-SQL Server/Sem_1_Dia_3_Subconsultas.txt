@@ -1,0 +1,149 @@
+use EjerciciosTich
+
+
+---Sub consulta 1------
+select top 1 * from Alumnos
+order by LEN(nombre) desc
+
+----1----
+select * from Alumnos
+where id = (select top 1 id from Alumnos
+order by LEN(nombre) desc)
+
+
+--------sub consulta 2--------------
+SELECT
+AVG(DATEDIFF(YEAR,fechaNacimiento, GETDATE())) AS 'Edad Promedio'
+FROM Alumnos
+
+
+------- Consulta 2 ---------
+select
+nombre as Alumno ,
+fechaNacimiento as 'Fecha de nacimiento',
+DATEDIFF(YEAR, fechaNacimiento, GETDATE()) as edad
+from Alumnos
+where DATEDIFF(YEAR, fechaNacimiento, GETDATE()) = (
+SELECT
+MAX(DATEDIFF(YEAR,fechaNacimiento, GETDATE())) AS 'Edad Promedio'
+FROM Alumnos
+)
+
+
+
+-----Sub consulta 3--------
+select
+MAX(calificacion) as 'Calificacion Mas Alta'
+from CursosAlumnos
+
+
+----Consulta 3-----
+Select
+alu.nombre as Alumno,
+alu.primerApellido as 'Apellido Paterno',
+alu.segundoApellido as 'Apellido Materno',
+cc.nombre as Curso,
+cu.fechaInicio as 'Fecha de Inicio',
+cu.fechaTermino as 'Fehca de Termino',
+ca.calificacion as Calificacion
+from CursosAlumnos ca
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+inner join Cursos cu
+on ca.idCurso = cu.id
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+where ca.calificacion = (select
+MAX(calificacion) as 'Calificacion Mas Alta'
+from CursosAlumnos)
+
+
+
+-----consulta 4 ----------
+
+select distinct 
+Curso,
+[Fecha de Inicio],
+[Fecha de Termino],
+Total,
+Maxima,
+Minima,
+Promedio
+from CursosAlumnos ca
+inner join Cursos cu
+on ca.idCurso = cu.id
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+inner join (select
+cc.nombre as Curso,
+cu.fechaInicio as 'Fecha de Inicio',
+cu.fechaTermino as 'Fecha de Termino',
+COUNT(ca.calificacion) as Total,
+MAX(ca.calificacion) as Maxima,
+Min(ca.calificacion) as Minima,
+AVG(ca.calificacion) as Promedio
+from CursosAlumnos ca
+inner join Cursos cu
+on ca.idCurso = cu.id
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+group by cc.nombre,cu.fechaInicio,cu.fechaTermino
+) toditos
+on cc.nombre = toditos.Curso
+
+
+
+
+-----sub consulta 5 ----------
+select
+Avg(calificacion)
+from CursosAlumnos
+
+
+-----consulta 5 ----------
+Select
+alu.nombre as Alumno,
+ca.calificacion as Promedio
+from CursosAlumnos ca
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+where ca.calificacion <= (select
+Avg(calificacion)
+from CursosAlumnos)
+
+
+
+------sub consulta 6 -------
+select
+idCurso as Curso,
+MAX(calificacion) as 'Calificacion Maxima'
+from CursosAlumnos ca
+group by ca.idCurso
+
+
+-------Consulta 6---------
+
+select distinct
+alu.nombre as Alumno,
+alu.primerApellido as 'Apellido Paterno',
+alu.segundoApellido as 'Apellido Materno',
+alu.fechaNacimiento as 'Fecha de Nacimiento',
+cc.nombre as Curso,
+cu.fechaInicio as 'Inicio del Curso',
+cu.fechaTermino as 'Termino del Curso',
+ca.calificacion as Calificacion
+from CursosAlumnos ca
+inner join Cursos cu
+on ca.idCurso = cu.id
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+inner join (select
+idCurso as Curso,
+MAX(calificacion) as 'Calificacion Maxima'
+from CursosAlumnos ca
+group by ca.idCurso) subcon
+on ca.idCurso = subcon.Curso
+Inner join Alumnos alu
+on ca.idAlumno = alu.id
+where ca.calificacion = subcon.[Calificacion Maxima]
+order by cc.nombre DESC

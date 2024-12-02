@@ -1,0 +1,61 @@
+select
+id,
+nombre as Nombre,
+primerApellido as "Apellido Paterno",
+segundoApellido as "Apellido Materno",
+fechaNacimiento as "Fecha de Nacimiento",
+GETDATE() as Hoy,
+DATEDIFF(YEAR,fechaNacimiento,GETDATE()) as Edad,
+DATEDIFF(YEAR,(DATEADD(month,-5,fechaNacimiento)),GETDATE()) as "Edad en 5 Meses"
+from Alumnos
+
+
+
+
+select
+id,
+upper(nombre) as Nombre,
+upper(primerApellido) as "Apellido Paterno",
+upper(segundoApellido) as "Apellido Materno",
+fechaNacimiento as "Fecha de Nacimiento",
+GETDATE() as Hoy,
+DATEDIFF(YEAR,fechaNacimiento,GETDATE()) as Edad,
+DATEDIFF(YEAR,(DATEADD(month,-5,fechaNacimiento)),GETDATE()) as "Edad en 5 Meses"
+from Alumnos
+
+
+
+select
+id,
+nombre as Nombre,
+primerApellido as "Apellido Paterno",
+segundoApellido as "Apellido Materno",
+fechaNacimiento as "Fecha de Nacimiento",
+curp as CURP,
+convert(date,(SUBSTRING(curp, 5, 6))) as [Dia Nacimiento curp]
+from Alumnos
+
+
+
+select
+id,
+nombre as Nombre,
+primerApellido as "Apellido Paterno",
+segundoApellido as "Apellido Materno",
+fechaNacimiento as "Fecha de Nacimiento",
+curp as CURP,
+IIF((SUBSTRING(curp,11,1)) = 'M','Mujer', IIF((SUBSTRING(curp,11,1)) = 'H','HOMBRE','NO VALIDO')) as "Sexo Curp",
+SUBSTRING(curp,11,1) as compro
+from Alumnos
+
+
+
+select
+id,
+nombre as Nombre,
+primerApellido as "Apellido Paterno",
+segundoApellido as "Apellido Materno",
+fechaNacimiento as "Fecha de Nacimiento",
+correo as Correo,
+REPLACE(correo, 'gmail', 'hotmail') as "Correo Hotmail"
+from Alumnos

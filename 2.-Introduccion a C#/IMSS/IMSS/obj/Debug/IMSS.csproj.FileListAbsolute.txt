@@ -1,0 +1,8 @@
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\IMSS\IMSS\bin\Debug\IMSS.exe.config
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\IMSS\IMSS\bin\Debug\IMSS.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\IMSS\IMSS\bin\Debug\IMSS.pdb
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\IMSS\IMSS\obj\Debug\IMSS.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\IMSS\IMSS\obj\Debug\IMSS.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\IMSS\IMSS\obj\Debug\IMSS.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\IMSS\IMSS\obj\Debug\IMSS.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\IMSS\IMSS\obj\Debug\IMSS.pdb

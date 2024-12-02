@@ -1,0 +1,8 @@
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\MenuGeneral\MenuGeneral\bin\Debug\MenuGeneral.exe.config
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\MenuGeneral\MenuGeneral\bin\Debug\MenuGeneral.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\MenuGeneral\MenuGeneral\bin\Debug\MenuGeneral.pdb
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\MenuGeneral\MenuGeneral\obj\Debug\MenuGeneral.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\MenuGeneral\MenuGeneral\obj\Debug\MenuGeneral.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\MenuGeneral\MenuGeneral\obj\Debug\MenuGeneral.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\MenuGeneral\MenuGeneral\obj\Debug\MenuGeneral.exe
+C:\Users\Tichs\Documents\PracticasNov\Semana2_Net\Practica_1\MenuGeneral\MenuGeneral\obj\Debug\MenuGeneral.pdb

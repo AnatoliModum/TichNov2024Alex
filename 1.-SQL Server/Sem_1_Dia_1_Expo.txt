@@ -1,0 +1,105 @@
+CREATE DATABASE EXPO
+USE EXPO
+
+create table empleados1NF(
+id_empleado int not null,
+nombre varchar(150) not null,
+clave_trabajo varchar(30) not null,
+trabajo varchar(100) not null,
+cp varchar(6) not null,
+estado varchar(50)not null
+)
+
+
+insert into empleados1NF values(1,'Pedro','T01','LAVA LOZA', '42950', 'Chiapas')
+insert into empleados1NF values(1,'Pedro','T02','Lava Pisos', '42950', 'Chiapas')
+insert into empleados1NF values(2,'Maria','T03','Mesera', '42955', 'Oaxaca')
+insert into empleados1NF values(2,'Maria','T01','LAVA LOZA', '42955', 'Oaxaca')
+insert into empleados1NF values(3,'Taylor','T05','Gerente', '42960', 'CDMX')
+
+select * from empleados1NF
+
+delete from empleados1NF where clave_trabajo = 'T04'
+
+
+------------------------------------------------------------------
+
+
+
+create table rolEmpleados2NF(
+id_rol int primary key identity(1,1),
+id_empleado int not null,
+clave_trabajo varchar(30) not null,
+)
+
+create table empleados2NF(
+id_empleado int primary key identity(1,1),
+nombre varchar(150) not null,
+cp varchar(6) not null,
+estado varchar(50)not null
+)
+
+create table trabajos2NF(
+clave_trabajo varchar(30) primary key not null,
+trabajo varchar(100) not null, 
+)
+
+alter table rolEmpleados2NF
+add constraint fk_empleado_rol
+foreign key (id_empleado)
+references empleados2NF(id_empleado)
+on delete cascade
+on update cascade
+
+alter table rolEmpleados2NF
+add constraint fk_clave_trabajo
+foreign key (clave_trabajo)
+references trabajos2NF(clave_trabajo)
+on delete cascade
+on update cascade
+
+-----------------------------------------------------------------
+
+create table empleados3NF(
+id_empleado int primary key identity(1,1),
+nombre varchar(150) not null,
+cp varchar(6) not null
+)
+
+create table trabajos3NF(
+clave_trabajo varchar(30) primary key not null,
+trabajo varchar(100) not null, 
+)
+
+create table estados3NF(
+cp varchar(6) primary key not null,
+estado varchar(50)not null
+)
+
+create table rolEmpleados3NF(
+id_rol int primary key identity(1,1),
+id_empleado int not null,
+clave_trabajo varchar(30) not null,
+)
+
+alter table rolEmpleados3NF
+add constraint fk_empleado_rol_3NF
+foreign key (id_empleado)
+references empleados3NF(id_empleado)
+on delete cascade
+on update cascade
+
+
+alter table rolEmpleados3NF
+add constraint fk_clave_trabajo_3NF
+foreign key (clave_trabajo)
+references trabajos3NF(clave_trabajo)
+on delete cascade
+on update cascade
+
+alter table empleados3NF
+add constraint fk_cp_estados_3NF
+foreign key (cp)
+references estados3NF(cp)
+on delete cascade
+on update cascade

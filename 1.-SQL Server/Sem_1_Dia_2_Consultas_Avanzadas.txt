@@ -1,0 +1,126 @@
+use EjerciciosTich
+
+select 
+nombre as "Nombre",
+primerApellido as "Apellido Paterno",
+segundoApellido as "Apellido Materno",
+rfc as RFC,
+cuotaHora as "Cuota Por Hora",
+IIF(activo>1,'Inactivo','Activo') as Activo
+from Instructores
+
+
+
+Select 
+CACU.nombre as Curso,
+CACU.horas as Horas,
+CU.fechaInicio as Inicio,
+CU.fechaTermino as Termino
+from Cursos CU inner join CatCursos CACU
+on CU.idCatCurso = CACU.id
+
+
+
+select 
+al.nombre as Nombre,
+al.primerApellido as "Apellido Paterno",
+al.segundoApellido as "Apellido Materno",
+al.curp as Curp,
+es.nombre as Estado,
+ea.nombre as Estatus
+from Alumnos al 
+inner join Estados es
+on al.idEstadoOrigen = es.id
+inner join EstatusAlumnos ea
+on al.idEstatus = ea.id
+
+
+
+
+select 
+inst.nombre as Instructor,
+inst.cuotaHora as "Cuota por Hora",
+cc.nombre as "Nombre Curso",
+cu.fechaInicio as Inicio,
+cu.fechaTermino as Termino
+from CursosInstructores ci inner join Cursos cu
+on ci.idCurso = cu.id
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+inner join Instructores inst
+on ci.idInstructor = inst.id
+
+
+
+SELECT * FROM Alumnos
+Select * from CursosAlumnos
+select * from Cursos
+
+select
+alu.nombre as Nombre,
+alu.primerApellido as "Apellido Paterno",
+alu.segundoApellido as "Apellido Materno",
+est.nombre as "Estado",
+cc.nombre as Curso,
+ca.fechaInscripcion as "Fecha Inscripcion",
+cu.fechaInicio as "Fecha Inicio",
+cu.fechaTermino as "Fecha Termino",
+ca.calificacion as Calificacion
+from CursosAlumnos ca 
+inner join Cursos cu
+on ca.idCurso = cu.id
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+inner join Estados est
+on alu.idEstadoOrigen = est.id
+order by ca.calificacion DESC
+
+
+
+
+
+SELECt
+cc.clave as Clave,
+cc.nombre as Curso,
+cc.horas as Horas,
+IIF(fkcc.nombre is null, 'Sin Pre Requisito' ,fkcc.nombre) as "Pre Requisito"
+FROM CatCursos cc
+left join CatCursos fkcc
+on cc.idPreRequisito = fkcc.id
+
+select * from CatCursos
+
+
+select
+alu.nombre as Nombre,
+alu.primerApellido as "Apellido Paterno",
+alu.segundoApellido as "Apellido Materno",
+cc.nombre as Curso,
+cu.fechaInicio as "Fecha Inicio",
+cu.fechaTermino as "Fecha Termino",
+ca.calificacion as Calificacion,
+CASE
+	WHEN ca.calificacion BETWEEN 9 AND 10 THEN 'Excelente'
+	WHEN ca.calificacion BETWEEN 7 AND 8 THEN 'Bien'
+	WHEN ca.calificacion = 6 THEN 'Suficiente'
+	ELSE 'N/A'
+	END AS Nivel
+from CursosAlumnos ca 
+inner join Cursos cu
+on ca.idCurso = cu.id
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+
+
+
+
+
+
+
+
+
+

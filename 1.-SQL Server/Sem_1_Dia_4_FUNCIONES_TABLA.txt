@@ -1,0 +1,113 @@
+USE EjerciciosTich
+
+SELECT * FROM Alumnos
+select * from tablaAmortización(1)
+
+drop function tablaAmortización
+
+create FUNCTION tablaAmortización(@IdAlumno int)
+returns @Tablita table (Quincena int identity(1,1), [Saldo Anterior] decimal(9,1), Pago decimal(9,1), [SaldoNuevo] decimal(9,1) )
+as
+begin
+
+declare @sueldoAlu decimal(9,2)
+declare @DeudaTotal decimal(9,2)
+declare @Pago decimal(9,2)
+declare @conta int
+
+select
+@sueldoAlu = sueldo
+from Alumnos
+where id = @IdAlumno
+
+set @DeudaTotal = @sueldoAlu * 2.5
+set @Pago = @DeudaTotal / 12
+set @conta = 12
+
+while @conta > 0
+begin
+insert into @Tablita ([Saldo Anterior], Pago , [SaldoNuevo]) 
+values(@DeudaTotal,@Pago, (@DeudaTotal - @Pago) )
+set @DeudaTotal = @DeudaTotal - @Pago
+set @conta = @conta - 1
+end
+
+return
+end
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+drop function prestamosInstructores
+
+
+
+create function prestamosInstructores (@IdInstructor int)
+returns @InsPres table 
+(Mes int identity(1,1), [Saldo Anterior] decimal(9,1), Intereses decimal(9,1), Pago Decimal(9,1), [Saldo Nuevo] decimal(9,1))
+as
+begin
+
+declare @CuotaHora decimal (9,2)
+declare @DeudaTotal decimal(9,2)
+declare @DeudaTotalIntereses decimal(9,2)
+declare @Pago decimal(9,2)
+declare @PagoIntereses decimal(9,2)
+declare @conta int = 12 
+declare @intereses decimal(9,5)
+declare @deudaIntereses decimal(9,5)
+DECLARE @SALDONUEVO decimal(9,1)
+
+select top 1
+@CuotaHora = CuotaHora 
+from Instructores
+where id = @IdInstructor
+
+set @DeudaTotal = @CuotaHora * 200
+
+set @intereses = case
+when @CuotaHora > 200 then .24
+else .18
+end
+
+set @Pago = @CuotaHora * 25
+
+while @conta > 0
+begin
+
+set @deudaIntereses = @DeudaTotal * (@intereses / 12)
+set @DeudaTotalIntereses = @DeudaTotal + @deudaIntereses
+SET @SALDONUEVO = case 
+WHEN ((@DeudaTotal + @deudaIntereses) - @Pago ) < 0 THEN 0
+else ((@DeudaTotal + @deudaIntereses) - @Pago )
+END
+
+insert into @InsPres ([Saldo Anterior], Intereses, Pago , [Saldo Nuevo]) 
+values(@DeudaTotal,@deudaIntereses, CASE
+WHEN @SALDONUEVO <= 0 THEN @DeudaTotal + @deudaIntereses
+ELSE @Pago
+END
+, @SALDONUEVO)
+
+set @DeudaTotal = @DeudaTotalIntereses - @Pago
+set @DeudaTotalIntereses = @DeudaTotalIntereses - @Pago
+set @conta = CASE
+WHEN @SALDONUEVO <= 0 THEN 0
+ELSE @conta - 1
+END
+end
+
+return
+end
+
+
+
+
+
+
+
+
+select * from prestamosInstructores(1)
+
+select * from Instructores

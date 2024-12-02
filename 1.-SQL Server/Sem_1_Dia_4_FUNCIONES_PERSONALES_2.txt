@@ -1,0 +1,495 @@
+-----------------Funcion 1
+
+create function SUMA( @a decimal(9,2), @b decimal(9,2))
+returns decimal(9,2)
+as
+Begin
+
+declare @resultado decimal(9,2) = @a + @b
+
+return @resultado
+End
+
+drop function SUMA
+Select dbo.SUMA(9.5,1) as Resultado
+
+
+
+
+-----------------Funcion 2
+
+
+create function Genero(@CURP Varchar(50))
+returns varchar(50)
+as
+Begin
+
+declare @SexoCurp varchar(50) = IIF(substring(@CURP, 11,1) = 'H', 'Hombre', ( IIF (substring(@CURP, 11,1) = 'M', 'Mujer', 'Invalido' ) ))
+
+return @Sexocurp
+End
+
+select
+nombre as Alumno,
+dbo.Genero(curp) as Sexo
+from Alumnos
+
+
+
+-----------------Funcion 3
+
+create function GetFechaNacimiento(@CURP varchar (50))
+returns table
+as
+return
+select
+CONVERT(date,substring(@CURP, 5,6)) as 'Fecha de Nacimiento',
+IIF(DATEPART(YEAR,CONVERT(date,substring(@CURP, 5,6))) BETWEEN 1900 AND 1999, 'Noventas', 'Dosmiles') as 'Siglo de nacimiento',
+DATEPART(MONTH,CONVERT(date,substring(@CURP, 5,6))) as 'Mes de Nacimiento',
+DATEPART(DAY,CONVERT(date,substring(@CURP, 5,6))) as 'Dia de Nacimiento'
+
+
+Select * from dbo.GetFechaNacimiento('DIAE950418HOCSVL07')
+
+
+
+-----------------Funcion 4
+
+create table EstadosCurp(
+id int primary key not null,
+Nombre VARCHAR(50) NOT NULL,
+CURP VARCHAR(50) NOT NULL
+)
+
+
+Select * from EstadosCurp
+
+
+create function GetidEstado(@CURP VARCHAR(50))
+RETURNS VARCHAR(50)
+AS
+Begin
+
+DECLARE @CodEst varchar(10) = substring(@CURP, 12,2)
+DECLARE @ESTADO VARCHAR(50) 
+
+select @ESTADO = Nombre
+from EstadosCurp 
+where CURP = @CodEst
+
+return @ESTADO
+End
+
+
+select
+nombre as Alumno,
+curp as Curp,
+dbo.GetidEstado(curp) as Estado
+from Alumnos
+
+-----------------Funcion 5
+
+select dbo.Calculadora(3,2,'%')
+
+
+Create function Calculadora (@a int, @b int, @Ope char(10))
+returns int
+as
+begin
+
+declare @resultado int = 0
+
+set @resultado = case
+when @Ope = '+' then @a + @b
+when @Ope = '-' then @a - @b
+when @Ope = '*' then @a * @b
+when @Ope = '%' then
+	CASE 
+	WHEN @b = 0 THEN 0 
+	ELSE @a % @b
+	END			
+WHEN @Ope = '/' THEN
+	CASE 
+	WHEN @b = 0 THEN 0 
+	ELSE @a / @b 
+	END
+
+else 0000 
+END
+
+return @resultado
+end
+
+
+-----------------Funcion 6
+
+
+create function GetHonorarios(@idInstructor smallint, @idCurso smallint)
+returns decimal (9,2)
+as
+begin
+
+declare @Honorarios decimal
+declare @HorasCurso decimal
+
+select
+@HorasCurso = cc.horas
+from Cursos cu
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+where cu.id = @idCurso
+
+select @Honorarios = cuotaHora from Instructores
+
+declare @TotalPagar decimal = @Honorarios * @HorasCurso
+
+return @TotalPagar
+end
+
+
+
+
+select
+cu.id as 'Id Curso',
+cc.nombre as Curso,
+cc.horas as Duracion
+from Cursos cu
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+
+select
+id,
+nombre as 'Instructor',
+cuotaHora as 'Honorarios por Hora'
+from Instructores
+
+select * from CursosInstructores
+
+select dbo.GetHonorarios(2,2) as 'Total a pagar'
+
+
+
+-----------------Funcion 7
+
+create function GetEdad(@Nacimiento date,@FechaDeseada date)
+returns decimal(4,2)
+as
+begin
+
+declare @edadActual decimal(4,2) = (DATEDIFF(DAY,@Nacimiento,@FechaDeseada))
+declare @contador int
+declare @contador2 int = @edadActual
+DECLARE @AÑOS INT
+
+while @contador2 != 0
+begin
+
+while @contador < 365
+begin
+set @contador2 = @contador2 - 1
+SET @AÑOS = 
+end
+
+SET @contador = 0
+
+end
+
+return @edadActual
+end
+
+drop function GetEdad
+
+SELECT
+nombre as Nombre,
+dbo.GetEdad(fechaNacimiento,GETDATE()) AS Edad,
+DATEDIFF(DAY,fechaNacimiento,GETDATE()) as Dias,
+fechaNacimiento as 'Fecha de nacimiento'
+FROM Alumnos
+
+select dbo.GetEdad('1999/11/22',GETDATE())
+
+select * from Alumnos
+
+
+-----------------Funcion 8
+create function getFactorial(@Factorial int)
+returns int as 
+begin
+declare @Acumulable int = @Factorial
+declare @ResAcu int = 1
+
+while @Acumulable != 1
+begin
+set @ResAcu = @ResAcu * @Acumulable
+set @Acumulable = @Acumulable - 1 
+end
+
+return @ResAcu
+end
+
+print dbo.getFactorial(5)
+drop function getFactorial
+
+
+create function getFactorial(@Factorial INT)
+RETURNS @Resultados table (Valor INT)
+AS
+BEGIN
+DECLARE @Acumulable INT = @Factorial
+DECLARE @ResAcu INT = 1
+
+WHILE @Acumulable != 0
+BEGIN
+
+INSERT INTO @Resultados VALUES ( @ResAcu)
+SET @ResAcu = @ResAcu * @Acumulable
+SET @Acumulable = @Acumulable - 1
+
+END
+
+RETURN
+END
+
+
+select * from getFactorial(5)
+
+
+-----------------Funcion 9
+
+
+create function getPagos(@Sueldo decimal(10,2))
+returns @PagosTabla Table (Quincena int,[Importe Faltante] decimal(10,2))
+as
+begin
+
+declare @DeudaTotal decimal(10,2) = @Sueldo * 2.5
+declare @PagoQuincenal decimal(10,2) = @DeudaTotal / 12
+declare @Quincena int = 1
+
+while @DeudaTotal > 0
+begin
+insert into @PagosTabla values (@Quincena,@DeudaTotal)
+set @DeudaTotal = @DeudaTotal - @PagoQuincenal
+set @Quincena = @Quincena + 1
+end
+
+insert into @PagosTabla values ((@Quincena + 1),0)
+
+return
+end
+
+drop function getPagos
+select * from dbo.getPagos(20000)
+
+
+
+
+
+
+
+
+
+create function getPagos(@Sueldo decimal(10,2))
+returns DECIMAL(9,2)
+as
+begin
+
+DECLARE @Deuda decimal(9,2) = @Sueldo * 2.5
+declare @totalQuincenal DECIMAL(9,2)= @Deuda / 12
+
+return @totalQuincenal
+end
+
+print dbo.getPagos(20000)
+
+-----------------Funcion 10
+
+create function calcularImpuestos(@Instructor smallint, @Curso smallint)
+returns decimal (9,2)
+as 
+begin
+
+declare @TotalImpuestos decimal (9,2)
+declare @Honorarios decimal (9,2)
+declare @HorasCurso decimal (9,2)
+declare @CodEst varchar(10)
+declare @HonorariosCurso decimal (9,2)
+
+select TOP 1
+@Honorarios = cuotaHora,
+@CodEst = substring(curp, 12,2)
+from Instructores ins
+where id = @Instructor
+
+select TOP 1
+@HorasCurso = cc.horas
+from Cursos cu
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+where cu.id = @Curso
+
+--CS -> CHIAPAS = 5 % 
+--SR -> Sonora = 10 % 
+--VZ -> Veracruz = 7 % 
+--El resto del país 8 %
+
+set @HonorariosCurso = @Honorarios * @HorasCurso
+
+set @TotalImpuestos = case
+when @CodEst = 'CS' then @HonorariosCurso * .05
+when @CodEst = 'SR' then @HonorariosCurso * .1
+when @CodEst = 'VZ' then @HonorariosCurso * .07
+else @HonorariosCurso * .08
+END
+
+
+
+return @TotalImpuestos
+end
+
+
+drop function calcularImpuestos
+print dbo.calcularImpuestos(2,2)
+
+
+
+select * from Instructores
+select * from Cursos
+select * from CatCursos
+select * from EstadosCurp where Nombre = 'Veracruz'
+
+select
+cu.id as IdCurso,
+cc.nombre as Curso,
+cc.horas as Duracion
+from Cursos cu
+inner join CatCursos cc
+on cu.idCatCurso = cc.id
+
+select
+id as IdInstructor,
+nombre as Instructor,
+cuotaHora as Honorarios,
+curp as Curp,
+dbo.GetidEstado(curp) as Estado
+from Instructores ins
+
+
+
+-----------------Funcion 11
+
+select
+alu.nombre as Alumno,
+ca.fechaInscripcion as Inscripcion,
+dbo.GetEdad(fechaNacimiento,ca.fechaInscripcion) AS 'Edad al Inscribirse',
+fechaNacimiento as 'Fecha de Nacimiento',
+dbo.GetEdad(fechaNacimiento,GETDATE()) AS 'Edad Actual'
+from CursosAlumnos ca
+inner join Alumnos alu
+on ca.idAlumno = alu.id
+where dbo.GetEdad(fechaNacimiento,GETDATE()) > 25
+order by dbo.GetEdad(fechaNacimiento,GETDATE()) DESC
+
+
+-----------------Funcion 12
+
+
+CREATE FUNCTION calculoDescuentos(@Meses int, @Salario decimal(9,2))
+returns varchar(150)
+as 
+begin
+
+declare @TotalPagar decimal(9,2) = @Salario * 2.5
+declare @Descuento decimal(9,2) = @Salario / 100000
+declare @DescuentoTotal decimal(9,2)
+declare @returnVal varchar(150)
+
+set @DescuentoTotal = case
+when @Meses = 1 then @TotalPagar * @Descuento
+when @Meses = 2 then @TotalPagar * (@Descuento * .75)
+when @Meses = 3 then @TotalPagar * (@Descuento * .50)
+when @Meses = 4 then @TotalPagar * (@Descuento * .25)
+when @Meses <= 5 then @TotalPagar
+else 0
+end
+
+SET @returnVal = case
+when @DescuentoTotal != 0 then CONVERT(varchar(150), @DescuentoTotal)
+else 'Ingrese un mes valido'
+end
+
+return @returnVal
+end
+
+drop function calculoDescuentos
+print 'Descuento total: %' + dbo.calculoDescuentos(1,20000)
+
+
+
+
+
+
+
+
+
+
+CREATE FUNCTION calculoDescuentos(@Meses int, @Salario decimal(9,2))
+returns varchar(150)
+as 
+begin
+
+declare @TotalPagar decimal(9,2) = @Salario * 2.5
+declare @Descuento decimal(9,2) = @Salario / 1000
+declare @DescuentoTotal decimal(9,2)
+declare @returnVal varchar(150)
+
+set @DescuentoTotal = case
+when @Meses = 1 then @Descuento
+when @Meses = 2 then (@Descuento * .75)
+when @Meses = 3 then (@Descuento * .50)
+when @Meses = 4 then (@Descuento * .25)
+when @Meses <= 5 then 0
+else 0
+end
+
+SET @returnVal = case
+when @Meses <= 6 then CONVERT(varchar(150), @DescuentoTotal)
+else 'Ingrese un mes valido'
+end
+
+return @returnVal
+end
+-----------------Funcion 13
+
+CREATE FUNCTION cambiarMayusculasPalabras(@PALABRITA NVARCHAR(MAX))
+RETURNS NVARCHAR(MAX)
+AS
+BEGIN
+    DECLARE @valsal NVARCHAR(MAX);
+
+   
+SET @valsal = LOWER(@PALABRITA)
+SET @valsal = STUFF(@valsal, 1, 1, UPPER(SUBSTRING(@valsal, 1, 1)));
+
+    
+DECLARE @conta int = 1;
+
+WHILE @conta <= LEN(@valsal)
+BEGIN
+IF SUBSTRING(@valsal, @conta, 1) = ' '
+BEGIN
+SET @valsal = STUFF(@valsal, @conta + 1, 1, UPPER(SUBSTRING(@valsal, @conta + 1, 1)));
+END
+SET @conta = @conta + 1;
+END
+
+RETURN @valsal;
+END;
+
+
+drop function cambiarMayusculasPalabras
+print dbo.cambiarMayusculasPalabras('  ola we  nas TAR*DES')
+
+
+
+
