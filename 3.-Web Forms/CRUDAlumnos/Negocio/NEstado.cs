@@ -8,10 +8,10 @@ using Datos;
 
 namespace Negocio
 {
-    internal class NEstado
+    public class NEstado
     {
         DEstado _controller = new DEstado();
-        List<Estado> Consultar() => _controller.Consultar();
-        Estado Consultar(int id) => _controller.Consultar(id);
+        public List<Estado> Consultar() => _controller.Consultar();
+        public Estado Consultar(int id) => _controller.Consultar(id);
     }
 }

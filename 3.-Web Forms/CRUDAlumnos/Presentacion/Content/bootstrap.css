@@ -134,6 +134,7 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
+    width: 74px;
 }
 button[disabled],
 html input[disabled] {

@@ -8,11 +8,11 @@ using Datos;
 
 namespace Negocio
 {
-    internal class NEstatusAlumno
+    public class NEstatusAlumno
     {
         DEstatusAlumno _controller = new DEstatusAlumno();
-        List<EstatusAlumno> Consultar() => _controller.Consultar();
-        
-        EstatusAlumno Consultar(int id) => _controller.Consultar(id);
+        public List<EstatusAlumno> Consultar() => _controller.Consultar();
+
+        public EstatusAlumno Consultar(int id) => _controller.Consultar(id);
     }
 }
