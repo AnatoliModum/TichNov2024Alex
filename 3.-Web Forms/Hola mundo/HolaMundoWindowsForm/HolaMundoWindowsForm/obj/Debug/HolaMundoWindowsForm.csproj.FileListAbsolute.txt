@@ -1,0 +1,11 @@
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\bin\Debug\HolaMundoWindowsForm.exe.config
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\bin\Debug\HolaMundoWindowsForm.exe
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\bin\Debug\HolaMundoWindowsForm.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\obj\Debug\HolaMundoWindowsForm.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\obj\Debug\HolaMundoWindowsForm.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\obj\Debug\HolaMundoWindowsForm.formEstados.resources
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\obj\Debug\HolaMundoWindowsForm.Properties.Resources.resources
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\obj\Debug\HolaMundoWindowsForm.csproj.GenerateResource.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\obj\Debug\HolaMundoWindowsForm.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\obj\Debug\HolaMundoWindowsForm.exe
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\HolaMundoWindowsForm\HolaMundoWindowsForm\obj\Debug\HolaMundoWindowsForm.pdb

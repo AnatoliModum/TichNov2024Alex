@@ -1,0 +1,11 @@
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\bin\Debug\ADOWinForms.exe.config
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\bin\Debug\ADOWinForms.exe
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\bin\Debug\ADOWinForms.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\obj\Debug\ADOWinForms.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\obj\Debug\ADOWinForms.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\obj\Debug\ADOWinForms.frmEstatusAlumnos.resources
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\obj\Debug\ADOWinForms.Properties.Resources.resources
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\obj\Debug\ADOWinForms.csproj.GenerateResource.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\obj\Debug\ADOWinForms.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\obj\Debug\ADOWinForms.exe
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\Hola mundo\ADOWinForms\ADOWinForms\obj\Debug\ADOWinForms.pdb

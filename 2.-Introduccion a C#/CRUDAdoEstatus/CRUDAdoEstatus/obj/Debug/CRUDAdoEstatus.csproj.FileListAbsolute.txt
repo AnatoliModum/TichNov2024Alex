@@ -1,0 +1,8 @@
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\BootCampTichDic\CRUDAdoEstatus\CRUDAdoEstatus\bin\Debug\CRUDAdoEstatus.exe.config
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\BootCampTichDic\CRUDAdoEstatus\CRUDAdoEstatus\bin\Debug\CRUDAdoEstatus.exe
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\BootCampTichDic\CRUDAdoEstatus\CRUDAdoEstatus\bin\Debug\CRUDAdoEstatus.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\BootCampTichDic\CRUDAdoEstatus\CRUDAdoEstatus\obj\Debug\CRUDAdoEstatus.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\BootCampTichDic\CRUDAdoEstatus\CRUDAdoEstatus\obj\Debug\CRUDAdoEstatus.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\BootCampTichDic\CRUDAdoEstatus\CRUDAdoEstatus\obj\Debug\CRUDAdoEstatus.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\BootCampTichDic\CRUDAdoEstatus\CRUDAdoEstatus\obj\Debug\CRUDAdoEstatus.exe
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\BootCampTichDic\CRUDAdoEstatus\CRUDAdoEstatus\obj\Debug\CRUDAdoEstatus.pdb

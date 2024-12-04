@@ -1,0 +1,11 @@
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\bin\Debug\Negocio.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\bin\Debug\Datos.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\bin\Debug\Entidades.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\bin\Debug\Datos.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\bin\Debug\Entidades.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\obj\Debug\Negocio.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\CRUDAlumnos\Negocio\obj\Debug\Negocio.pdb

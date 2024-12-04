@@ -1,0 +1,9 @@
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\HolaMundo3Capas\Data\bin\Debug\Data.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\HolaMundo3Capas\Data\bin\Debug\Data.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\HolaMundo3Capas\Data\bin\Debug\Entidades.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\HolaMundo3Capas\Data\bin\Debug\Entidades.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\HolaMundo3Capas\Data\obj\Debug\Datos.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\HolaMundo3Capas\Data\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\HolaMundo3Capas\Data\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\HolaMundo3Capas\Data\obj\Debug\Data.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\HolaMundo3Capas\Data\obj\Debug\Data.pdb
