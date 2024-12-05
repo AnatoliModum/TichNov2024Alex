@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidades;
+using Negocio;
 
 namespace Presentacion
 {
@@ -12,7 +13,9 @@ namespace Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            NAlumno negAlu = new NAlumno();
+
+            lblTest.Text = negAlu.CalcularIMSS(20000).infonavit.ToString();
         }
 
         

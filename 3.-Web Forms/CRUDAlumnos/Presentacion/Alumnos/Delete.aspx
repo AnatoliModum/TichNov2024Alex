@@ -1,21 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Delete.aspx.cs" Inherits="Presentacion.Alumnos.Delete" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <div class="col col-lg-6 ">
+
     <h1>Datos del Alumno</h1>
     <hr />
-
-    <style>
-        table {
-            width: 50%;
-        }
-
-        th, td {
-            width: 25%;
-            text-align: left;
-        }
-    </style>
-
-    <table>
+    <table class="table table-hover col col-md-2">
+        <tbody>
         <tr>
             <td><strong>Id</strong></td>
             <td>
@@ -71,8 +62,24 @@
             <td>
                 <asp:Label ID="lblEstatus" runat="server" Text=""></asp:Label></td>
         </tr>
+
+            <tr>
+                <td>
+                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CssClass="btn btn-default" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p><a href ="Index.aspx">Regresar a lista</a></p>
+                </td>
+            </tr>
+
+            </tbody>
     </table>
     <br />
-    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
+    
+
+        </div>
 
 </asp:Content>

@@ -26,7 +26,7 @@ namespace Datos
                     SqlCommand comando = new SqlCommand(query, conexion);
                     comando.CommandType = CommandType.StoredProcedure;
 
-                    comando.Parameters.AddWithValue("@idAlumno",-1);
+                    comando.Parameters.AddWithValue("@idAlumno", -1);
 
 
                     conexion.Open();
@@ -199,5 +199,48 @@ namespace Datos
                 Console.WriteLine("Error al actualizar los datos " + e.Message);
             }
         }
+        public List<ItemTablaISR> ConsultarTablaISR()
+        {
+            List<ItemTablaISR> list = new List<ItemTablaISR>();
+            string query = "select * from TablaISR";
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(stringConnection))
+                {
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.CommandType = CommandType.Text;
+                    conexion.Open();
+                    SqlDataReader lector = comando.ExecuteReader();
+
+
+                    while (lector.Read())
+                    {
+                        list.Add(
+                            new ItemTablaISR()
+                            {
+                                limiteInferior = decimal.Parse(lector["LimInf"].ToString()),
+                                limiteSuperior = decimal.Parse(lector["LimSup"].ToString()),
+                                cuotaFija = decimal.Parse(lector["CuotaFija"].ToString()),
+                                excedente = decimal.Parse(lector["ExedLimInf"].ToString()),
+                                subsidio = decimal.Parse(lector["Subsidio"].ToString()),
+                                ISR = 0
+                            }
+                            );
+                    }
+
+
+                    conexion.Close();
+                }
+            }
+            catch (SqlException ex)
+            {
+
+
+            }
+
+            return list;
+        }
+
     }
 }

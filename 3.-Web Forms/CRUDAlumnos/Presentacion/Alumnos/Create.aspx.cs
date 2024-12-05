@@ -65,32 +65,73 @@ namespace Presentacion.Alumnos
 
         }
 
-        protected void btnEliminar_Click(object sender, EventArgs e)
+        protected void btnCreate_Click(object sender, EventArgs e)
         {
-            NAlumno negAlumno = new NAlumno();
-            Alumno alu = new Alumno();
-
-            alu.id = 0;
-            alu.nombre = txtNombre.Text;
-            alu.pApellido = txtPApe.Text;
-            alu.sApellido = txtSApe.Text;
-            alu.correo = txtCorreo.Text;
-            alu.telefono = txtTelefono.Text;
-            alu.fNacimiento = DateTime.Parse(txtFNaci.Text);
-            alu.curp = txtCurp.Text;
-            alu.sueldo = decimal.Parse(txtSueldo.Text);
-            alu.idEstadoOrigen = int.Parse(ddlEstado.SelectedValue);
-            alu.idEstatus = int.Parse(ddlEstatus.SelectedValue);
-
-            try
+            if (Page.IsValid)
             {
-                negAlumno.Agregar(alu);
-            }
-            catch(Exception ex)
-            {
-                lblEx.Text = "Error al agregar: " + ex;
+                NAlumno negAlumno = new NAlumno();
+                Alumno alu = new Alumno();
+
+                alu.id = 0;
+                alu.nombre = txtNombre.Text;
+                alu.pApellido = txtPApe.Text;
+                alu.sApellido = txtSApe.Text;
+                alu.correo = txtCorreo.Text;
+                alu.telefono = txtTelefono.Text;
+                alu.fNacimiento = DateTime.Parse(txtFNaci.Text);
+                alu.curp = txtCurp.Text.ToUpper();
+                alu.sueldo = decimal.Parse(txtSueldo.Text);
+                alu.idEstadoOrigen = int.Parse(ddlEstado.SelectedValue);
+                alu.idEstatus = int.Parse(ddlEstatus.SelectedValue);
+
+                try
+                {
+                    negAlumno.Agregar(alu);
+                    //lblEx.Text = "El proceso fallo con exito";
+                }
+                catch (Exception ex)
+                {
+                    lblEx.Text = "Error al agregar: " + ex;
+                }
             }
             
+            
         }
+
+        protected void cv2Curp_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string completeCurp = args.Value;
+            string nameCurp = completeCurp.Substring(0, 4);
+            string fechaCurp = completeCurp.Substring(4, 6);
+            string sexoCurp = completeCurp.Substring(10, 1);
+            string entidadCurp = completeCurp.Substring(11, 2);
+            string consoCurp = completeCurp.Substring(13, 3);
+            string randomNumCurp = completeCurp.Substring(16, 2);
+            args.IsValid = false;
+
+            if (!nameCurp.Any(char.IsDigit))
+            {
+                if (int.TryParse(fechaCurp, out int resu2))
+                {
+                    if (!sexoCurp.Any(char.IsDigit))
+                    {
+                        if (!entidadCurp.Any(char.IsDigit))
+                        {
+                            if (!consoCurp.Any(char.IsDigit))
+                            {
+                                if (int.TryParse(randomNumCurp, out int resu6))
+                                {
+                                    args.IsValid = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+
     }
 }

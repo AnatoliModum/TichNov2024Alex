@@ -36,7 +36,7 @@ namespace Presentacion.Alumnos
             txtFNaci.Text = alu.fNacimiento.ToString("yyyy-MM-dd");
             txtCurp.Text = alu.curp;
             txtSueldo.Text = alu.sueldo.ToString("F2");
-            FillDDLById(alu.idEstatus , alu.idEstadoOrigen);
+            FillDDLById(alu.idEstatus, alu.idEstadoOrigen);
         }
         public void FillDDLById(int idEstatus, int idEstado)
         {
@@ -65,29 +65,79 @@ namespace Presentacion.Alumnos
         }
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            NAlumno negAlumno = new NAlumno();
-            Alumno alu = new Alumno();
-
-            alu.id = int.Parse(txtId.Text);
-            alu.nombre = txtNombre.Text;
-            alu.pApellido = txtPApe.Text;
-            alu.sApellido = txtSApe.Text;
-            alu.correo = txtCorreo.Text;
-            alu.telefono = txtTelefono.Text;
-            alu.fNacimiento = DateTime.Parse(txtFNaci.Text);
-            alu.curp = txtCurp.Text;
-            alu.sueldo = decimal.Parse(txtSueldo.Text);
-            alu.idEstadoOrigen = int.Parse(ddlEstado.SelectedValue);
-            alu.idEstatus = int.Parse(ddlEstatus.SelectedValue);
-
             try
             {
-                negAlumno.Actualizar(alu);
+                if (Page.IsValid)
+                {
+                    NAlumno negAlumno = new NAlumno();
+                    Alumno alu = new Alumno();
+
+                    alu.id = int.Parse(txtId.Text);
+                    alu.nombre = txtNombre.Text;
+                    alu.pApellido = txtPApe.Text;
+                    alu.sApellido = txtSApe.Text;
+                    alu.correo = txtCorreo.Text;
+                    alu.telefono = txtTelefono.Text;
+                    alu.fNacimiento = DateTime.Parse(txtFNaci.Text);
+                    alu.curp = txtCurp.Text;
+                    alu.sueldo = decimal.Parse(txtSueldo.Text);
+                    alu.idEstadoOrigen = int.Parse(ddlEstado.SelectedValue);
+                    alu.idEstatus = int.Parse(ddlEstatus.SelectedValue);
+
+
+                    negAlumno.Actualizar(alu);
+                }
             }
             catch (Exception ex)
             {
                 lblEx.Text = "Error al Actualizar: " + ex;
             }
+        }
+
+        protected void cvCurp_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            String curpForm = args.Value.ToString();
+            String dayCurp = curpForm.Substring(8, 2);
+            String monthCurp = curpForm.Substring(6, 2);
+            String yearCurp = curpForm.Substring(4, 2);
+            String fechaCurp = yearCurp + "-" + monthCurp + "-" + dayCurp;
+            String fechaNacimiento = txtFNaci.Text.Substring(2, 8);
+
+            args.IsValid = curpForm.Length == 18 ? true : false;
+            args.IsValid = fechaCurp.Equals(fechaNacimiento) ? true : false;
+        }
+
+        protected void cv2Curp_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string completeCurp = args.Value;
+            string nameCurp = completeCurp.Substring(0,4);
+            string fechaCurp = completeCurp.Substring(4, 6);
+            string sexoCurp = completeCurp.Substring(10, 1);
+            string entidadCurp = completeCurp.Substring(11, 2);
+            string consoCurp = completeCurp.Substring(13, 3);
+            string randomNumCurp = completeCurp.Substring(16, 2);
+            args.IsValid = false;
+
+            if (!nameCurp.Any(char.IsDigit))
+            {
+                if (int.TryParse(fechaCurp, out int resu2))
+                {
+                    if (!sexoCurp.Any(char.IsDigit)){
+                        if (!entidadCurp.Any(char.IsDigit))
+                        {
+                            if (!consoCurp.Any(char.IsDigit))
+                            {
+                                if (int.TryParse(randomNumCurp, out int resu6))
+                                {
+                                    args.IsValid = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
         }
     }
 }
