@@ -1,3 +1,5 @@
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\obj\Debug\WebServiceASMX.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\obj\Debug\WebServiceASMX.csproj.CoreCompileInputs.cache
 C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\bin\WebServiceASMX.dll.config
 C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\bin\WebServiceASMX.dll
 C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\bin\WebServiceASMX.pdb
@@ -54,12 +56,7 @@ C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\W
 C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\bin\Entidades.dll
 C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\bin\Negocio.dll
-C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\bin\Datos.pdb
-C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\bin\Entidades.pdb
-C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\bin\Negocio.pdb
 C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\obj\Debug\WebServiceASMX.csproj.AssemblyReference.cache
-C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\obj\Debug\WebServiceASMX.csproj.CoreCompileInputs.cache
 C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\obj\Debug\WebServiceASMX.csproj.CopyComplete
 C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\obj\Debug\WebServiceASMX.dll
 C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\3.-Web Forms\WebServiceASMX\WebServiceASMX\obj\Debug\WebServiceASMX.pdb

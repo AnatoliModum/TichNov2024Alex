@@ -21,12 +21,6 @@ namespace WebServiceASMX
     {
 
         [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hola a todos";
-        }
-
-        [WebMethod]
         public AportacionesIMSS CalcularIMSS(int idAlumno)
         {
             AportacionesIMSS apo = new AportacionesIMSS();

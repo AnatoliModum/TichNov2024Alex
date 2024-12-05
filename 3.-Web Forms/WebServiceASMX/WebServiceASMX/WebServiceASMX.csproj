@@ -43,15 +43,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Datos">
-      <HintPath>..\..\CRUDAlumnos\Presentacion\bin\Datos.dll</HintPath>
+    <Reference Include="Datos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Datos.dll</HintPath>
     </Reference>
     <Reference Include="Entidades">
-      <HintPath>..\..\CRUDAlumnos\Presentacion\bin\Entidades.dll</HintPath>
+      <HintPath>..\packages\Entidades.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Negocio">
-      <HintPath>..\..\CRUDAlumnos\Presentacion\bin\Negocio.dll</HintPath>
+    <Reference Include="Negocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Negocio.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
