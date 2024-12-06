@@ -15,7 +15,7 @@ namespace Presentacion
         {
             NAlumno negAlu = new NAlumno();
 
-            lblTest.Text = negAlu.CalcularIMSS(20000).infonavit.ToString();
+            lblTest.Text = negAlu.CalcularIMSS(1).infonavit.ToString();
         }
 
         
