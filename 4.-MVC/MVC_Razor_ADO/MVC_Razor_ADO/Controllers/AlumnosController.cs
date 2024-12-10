@@ -16,7 +16,6 @@ namespace MVC_Razor_ADO.Controllers
         private NEstatusAlumno negEstaAlu = new NEstatusAlumno();
 
 
-
         public ActionResult Index() => View(RetornarDataCompleta());
         public List<ExpandoObject> RetornarDataCompleta()
         {
@@ -68,7 +67,7 @@ namespace MVC_Razor_ADO.Controllers
                               telefono = alucno.telefono,
                               Estado = estado.nombre,
                               Estatus = estatus.nombre,
-                              birthDay = alucno.fNacimiento.ToString("td/MM/yyyy"),
+                              birthDay = alucno.fNacimiento.ToString("dd/MM/yyyy"),
                               curp = alucno.curp,
                               sueldo = alucno.sueldo
 
@@ -94,7 +93,7 @@ namespace MVC_Razor_ADO.Controllers
 
             return expandoList;
         }
-        public ActionResult Details(int id) => View(RetornarDataById(id));
+        public ActionResult Details(int id) => View(RetornarDataById(id)[0]);
         [HttpPost]
         public ActionResult Create(Alumno aluEnt)
         {

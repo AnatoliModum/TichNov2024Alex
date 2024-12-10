@@ -9,54 +9,58 @@
 
     foreach (var alucno in Model)
     {
-        <table class="table table-hover col col-md-2">
-            <tbody>
-                <tr>
-                    <td>Id</td>
-                    <td>@alucno.id</td>
-                </tr>
-                <tr>
-                    <td>Nombre</td>
-                    <td>@alucno.Nombre</td>
-                </tr>
-                <tr>
-                    <td>Primer Apellido</td>
-                    <td>@alucno.pApellido</td>
-                </tr>
-                <tr>
-                    <td>Segundo Apellido</td>
-                    <td>@alucno.sApellido</td>
-                </tr>
-                <tr>
-                    <td>Correo</td>
-                    <td>@alucno.correo</td>
-                </tr>
-                <tr>
-                    <td>Teléfono</td>
-                    <td>@alucno.telefono</td>
-                </tr>
-                <tr>
-                    <td>Fecha de Nacimiento</td>
-                    <td>@alucno.birthDay</td>
-                </tr>
-                <tr>
-                    <td>CURP</td>
-                    <td>@alucno.curp</td>
-                </tr>
-                <tr>
-                    <td>Sueldo</td>
-                    <td>@alucno.sueldo</td>
-                </tr>
-                <tr>
-                    <td>Estado de Origen</td>
-                    <td>@alucno.Estado</td>
-                </tr>
-                <tr>
-                    <td>Estatus</td>
-                    <td>@alucno.Estatus</td>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <h4>Alumno</h4>
+            <hr />
+            <dl class="dl-horizontal">
+
+                <dt>Id</dt>
+                <dd>@Model.id</dd>
+
+
+
+                <dt>Nombre</dt>
+                <dd>@Model.Nombre</dd>
+
+
+                <dt>Primer Apellido</dt>
+                <dd>@Model.pApellido</dd>
+
+
+                <dt>Segundo Apellido</dt>
+                <dd>@Model.sApellido</dd>
+
+
+                <dt>Correo</dt>
+                <dd>@Model.correo</dd>
+
+
+                <dt>Teléfono</dt>
+                <dd>@Model.telefono</dd>
+
+
+                <dt>Fecha de Nacimiento</dt>
+                <dd>@Model.birthDay</dd>
+
+
+                <dt>CURP</dt>
+                <dd>@Model.curp</dd>
+
+
+                <dt>Sueldo</dt>
+                <dd>@Model.sueldo</dd>
+
+
+                <dt>Estado de Origen</dt>
+                <dd>@Model.Estado</dd>
+
+
+                <dt>Estatus</dt>
+                <dd>@Model.Estatus</dd>
+
+
+            </dl>
+        </div>
 
         <input type="submit" value="Eliminar" class="btn btn-default" />
     }

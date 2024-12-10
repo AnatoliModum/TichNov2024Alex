@@ -1,7 +1,8 @@
 ﻿@*@model IEnumerable<Entidades.Alumno>*@
 @model IEnumerable<dynamic>
 
-@Html.ActionLink("Crear", "Create")
+@Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-success" })
+
 
 <h2>Lista de Alumnos</h2>
 <table class="table table-hover col col-md-2">
@@ -15,6 +16,9 @@
             <th>Telefono</th>
             <th>Estado</th>
             <th>Estatus</th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -31,9 +35,13 @@
                 <td>@alumno.Estatus</td>
 
                 <td>
-                    @Html.ActionLink("Detalles", "Details", new { id = alumno.id }) |
-                    @Html.ActionLink("Editar", "Edit", new { id = alumno.id }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = alumno.id })
+                    @Html.ActionLink("Editar", "Edit", new { id = alumno.id }, new { @class = "btn btn-success" })
+                </td>
+                <td>
+                    @Html.ActionLink("Detalles", "Details", new { id = alumno.id }, new { @class = "btn btn-warning" })
+                </td>
+                <td>
+                    @Html.ActionLink("Eliminar", "Delete", new { id = alumno.id }, new { @class = "btn btn-danger" })
                 </td>
 
             </tr>

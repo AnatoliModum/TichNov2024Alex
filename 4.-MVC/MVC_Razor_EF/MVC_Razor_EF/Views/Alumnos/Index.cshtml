@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MVC_Razor_EF.Models.Alumnos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Listado Alumnos</h2>
+
+<p>
+    @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-success" })
+
+</p>
+<table class="table table-hover col col-md-2">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellido Paterno
+        </th>
+        <th>
+            Apellido Materno
+        </th>
+        <th>
+            Correo
+        </th>
+        <th>
+            Telefono
+        </th>
+        <th>
+            Fecha de Nacimiento
+        </th>
+        <th>
+            Sueldo
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Estatus
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.primerApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.segundoApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @item.fechaNacimiento.ToString("MM/dd/yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sueldo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estados.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstatusAlumnos.nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.id }, new { @class = "btn btn-success" })
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new { id = item.id }, new { @class = "btn btn-warning" })
+            </td>
+            <td>
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
