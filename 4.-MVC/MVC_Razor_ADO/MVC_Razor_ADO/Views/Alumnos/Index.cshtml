@@ -1,0 +1,42 @@
+﻿@*@model IEnumerable<Entidades.Alumno>*@
+@model IEnumerable<dynamic>
+
+@Html.ActionLink("Crear", "Create")
+
+<h2>Lista de Alumnos</h2>
+<table class="table table-hover col col-md-2">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Estado</th>
+            <th>Estatus</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var alumno in Model)
+        {
+            <tr>
+                <td>@alumno.id</td>
+                <td>@alumno.Nombre</td>
+                <td>@alumno.pApellido</td>
+                <td>@alumno.sApellido</td>
+                <td>@alumno.correo</td>
+                <td>@alumno.telefono</td>
+                <td>@alumno.Estado</td>
+                <td>@alumno.Estatus</td>
+
+                <td>
+                    @Html.ActionLink("Detalles", "Details", new { id = alumno.id }) |
+                    @Html.ActionLink("Editar", "Edit", new { id = alumno.id }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = alumno.id })
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

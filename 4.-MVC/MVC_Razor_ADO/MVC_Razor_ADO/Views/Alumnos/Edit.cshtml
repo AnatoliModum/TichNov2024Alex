@@ -1,0 +1,86 @@
+﻿@model Entidades.Alumno
+
+<h2>Editar Alumno</h2>
+<br />
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    
+    <table class="table table-hover col col-md-2">
+        <tbody>
+            <tr>
+                <td><strong>Id</strong></td>
+                <td>
+                    @Html.TextBoxFor(m => m.id, new { @class = "form-control", @readonly = "readonly" })
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Nombre</strong></td>
+                <td>
+                    @Html.TextBoxFor(m => m.nombre, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Primer Apellido</strong></td>
+                <td>
+                    @Html.TextBoxFor(m => m.pApellido, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Segundo Apellido</strong></td>
+                <td>
+                    @Html.TextBoxFor(m => m.sApellido, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Correo</strong></td>
+                <td>
+                    @Html.TextBoxFor(m => m.correo, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Telefono</strong></td>
+                <td>
+                    @Html.TextBoxFor(m => m.telefono, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Fecha de Nacimiento</strong></td>
+                <td>
+                    @Html.TextBoxFor(m => m.fNacimiento, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Curp</strong></td>
+                <td>
+                    @Html.TextBoxFor(m => m.curp, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Sueldo</strong></td>
+                <td>
+                    @Html.TextBoxFor(m => m.sueldo, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Estado de Origen</strong></td>
+                <td>
+                    @Html.DropDownListFor(m => m.idEstadoOrigen, (IEnumerable<SelectListItem>)ViewBag.Estados, new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Estatus</strong></td>
+                <td>
+                    @Html.DropDownListFor(m => m.idEstatus, (IEnumerable<SelectListItem>)ViewBag.Estatus, new { @class = "form-control" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="Guardar" class="btn btn-default" />
+}
+
+<p>
+    @Html.ActionLink("Volver a la Lista", "Index")
+</p>

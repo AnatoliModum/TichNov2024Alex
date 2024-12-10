@@ -1,0 +1,68 @@
+﻿@*@model Entidades.Alumno*@
+@model IEnumerable<dynamic>
+
+
+<h2>Detalles del Alumno</h2>
+
+@using (Html.BeginForm())
+{
+
+    foreach (var alucno in Model)
+    {
+        <table class="table table-hover col col-md-2">
+            <tbody>
+                <tr>
+                    <td>Id</td>
+                    <td>@alucno.id</td>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td>@alucno.Nombre</td>
+                </tr>
+                <tr>
+                    <td>Primer Apellido</td>
+                    <td>@alucno.pApellido</td>
+                </tr>
+                <tr>
+                    <td>Segundo Apellido</td>
+                    <td>@alucno.sApellido</td>
+                </tr>
+                <tr>
+                    <td>Correo</td>
+                    <td>@alucno.correo</td>
+                </tr>
+                <tr>
+                    <td>Teléfono</td>
+                    <td>@alucno.telefono</td>
+                </tr>
+                <tr>
+                    <td>Fecha de Nacimiento</td>
+                    <td>@alucno.birthDay</td>
+                </tr>
+                <tr>
+                    <td>CURP</td>
+                    <td>@alucno.curp</td>
+                </tr>
+                <tr>
+                    <td>Sueldo</td>
+                    <td>@alucno.sueldo</td>
+                </tr>
+                <tr>
+                    <td>Estado de Origen</td>
+                    <td>@alucno.Estado</td>
+                </tr>
+                <tr>
+                    <td>Estatus</td>
+                    <td>@alucno.Estatus</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <input type="submit" value="Eliminar" class="btn btn-default" />
+    }
+}
+<p>
+    @Html.ActionLink("Volver a la Lista", "Index")
+</p>
+
+

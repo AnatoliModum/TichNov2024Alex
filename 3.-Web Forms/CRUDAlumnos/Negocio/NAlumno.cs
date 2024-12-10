@@ -13,7 +13,7 @@ namespace Negocio
 {
     public class NAlumno
     {
-        WSAlumno.WSAlumnosSoapClient _wsAlu = new WSAlumno.WSAlumnosSoapClient();
+        //WSAlumno.WSAlumnosSoapClient _wsAlu = new WSAlumno.WSAlumnosSoapClient();
         DAlumno _controller = new DAlumno();
         public List<Alumno> Consultar() => _controller.Consultar();
         public Alumno Consultar(int id) => _controller.Consultar(id);
@@ -59,9 +59,9 @@ namespace Negocio
 
             try
             {
-                WSAlumno.AportacionesIMSS IMSSService = _wsAlu.CalcularIMSS(id);
-                string json = JsonConvert.SerializeObject(IMSSService);
-                apoIm = JsonConvert.DeserializeObject<AportacionesIMSS>(json);
+                //WSAlumno.AportacionesIMSS IMSSService = _wsAlu.CalcularIMSS(id);
+                //string json = JsonConvert.SerializeObject(IMSSService);
+                //apoIm = JsonConvert.DeserializeObject<AportacionesIMSS>(json);
             }
             catch (Exception ex)
             {

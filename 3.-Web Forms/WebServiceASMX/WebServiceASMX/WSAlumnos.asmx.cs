@@ -21,21 +21,21 @@ namespace WebServiceASMX
     {
 
         [WebMethod]
-        public AportacionesIMSS CalcularIMSS(int idAlumno)
+        public AportacionesIMSS CalcularIMSS(int id)
         {
             AportacionesIMSS apo = new AportacionesIMSS();
             NAlumno negAlu = new NAlumno();
-            apo = negAlu.CalcularIMSS(idAlumno);
+            apo = negAlu.CalcularIMSS(id);
 
             return apo;
         }
 
         [WebMethod]
-        public ItemTablaISR CalcularIsr(int idAlumno)
+        public ItemTablaISR CalcularIsr(int id)
         {
             ItemTablaISR apo = new ItemTablaISR();
             NAlumno negAlu = new NAlumno();
-            apo = negAlu.CalcularIsr(idAlumno);
+            apo = negAlu.CalcularIsr(id);
 
             return apo;
         }

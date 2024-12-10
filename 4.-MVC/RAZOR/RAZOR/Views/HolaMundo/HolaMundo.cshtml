@@ -1,0 +1,98 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    ViewData["Title"] = "Hola Mundo";
+    var horaActual = DateTime.Now;
+    var saludo = "";
+    if (horaActual.Hour >= 5 && horaActual.Hour < 12)
+    {
+        saludo = "Buenos días";
+    }
+    else if (horaActual.Hour >= 12 && horaActual.Hour < 19)
+    {
+        saludo = "Buenas tardes";
+    }
+    else { saludo = "Buenas noches"; }
+
+    <h1>Bienvenido</h1>
+    <p>Hoy es @horaActual.ToString()</p>
+    <p>@saludo</p>
+
+
+    <h2>Reuest</h2>
+
+    var flPat = @System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory);
+
+    <ul>
+        <li>Url: @Context.Request.Path</li>
+        <li>FilePath: @flPat</li>
+        <li>Path físico del recurso: @Context.Request.Path</li>
+        <li>RequestType: @Context.Request.Method</li>
+    </ul>
+
+    <h2> Ciclo for </h2>
+
+    var suma = 0;
+    @for (var i = 1; i <= 10; i++)
+    {
+        suma = suma + i;
+        <p> Suma -> @suma </p>
+
+    }
+
+    <h5>La suma es @suma</h5>
+    
+    <br />
+
+    <H2> Diccionario </H2>
+
+
+    Dictionary<string, string> definiciones = new Dictionary<string, string>()
+    {
+    { "HTTP" , "Es un protocolo de acceso....." },
+    { "CLASE" , "Es una plantilla....." },
+    { "HTML" , "Es un lenguaje de marcado....." }
+    };
+
+
+    <dl>
+
+        <dt>
+            <p>HTTP</p>
+        </dt>
+        <dd>
+            <p>@definiciones["HTTP"]</p>
+        </dd>
+
+        <dt>
+            <p>CLASE</p>
+        </dt>
+        <dd>
+            <p><p>@definiciones["CLASE"]</p></p>
+        </dd>
+
+        <dt>
+            <p>HTML</p>
+        </dt>
+        <dd>
+            <p>@definiciones["HTML"]</p>
+        </dd>
+
+    </dl>
+
+    <br />
+
+    <h2>Request variables</h2>
+
+    <ol>
+
+        <li> ALL_HTTP ->  @Context.Request.ServerVariables["URL"] </li>
+
+    </ol>
+    
+
+
+
+}
