@@ -1,0 +1,15 @@
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\bin\Debug\Datos.dll.config
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\bin\Debug\Datos.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\bin\Debug\Datos.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\bin\Debug\Entidades.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\bin\Debug\EntityFramework.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\bin\Debug\Entidades.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\bin\Debug\Entidades.dll.config
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\bin\Debug\EntityFramework.xml
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\obj\Debug\Datos.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\MVCEF3Capas\Datos\obj\Debug\Datos.pdb
