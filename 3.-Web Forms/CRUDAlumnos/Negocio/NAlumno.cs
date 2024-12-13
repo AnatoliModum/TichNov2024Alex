@@ -20,6 +20,65 @@ namespace Negocio
         public void Agregar(Alumno alumno) => _controller.Agregar(alumno);
         public void Actualizar(Alumno alumno) => _controller.Actualizar(alumno);
         public void Eliminar(int id) => _controller.Eliminar(id);
+        public ItemTablaISR calcularisr(int id)
+        {
+            ItemTablaISR isrentidad = new ItemTablaISR();
+
+            try
+            {
+                List<ItemTablaISR> listisr = _controller.ConsultarTablaISR();
+                decimal sueldoquincenal = Consultar(id).sueldo / 2;
+
+
+
+                var isrentity = (from isrenti in listisr
+                                 where isrenti.limiteInferior < sueldoquincenal && isrenti.limiteSuperior > sueldoquincenal
+                                 select isrenti).First();
+
+                isrentidad = isrentity;
+
+                isrentidad.ISR = sueldoquincenal - isrentidad.limiteInferior;
+                isrentidad.ISR = (isrentidad.ISR * isrentidad.excedente) / 100;
+                isrentidad.ISR = isrentidad.ISR + isrentidad.cuotaFija;
+                isrentidad.ISR = isrentidad.ISR - isrentidad.subsidio;
+            }
+            catch (Exception ex)
+            {
+            }
+            return isrentidad;
+            }
+           
+            
+            public AportacionesIMSS CalcularIMSS(int id)
+            {
+            AportacionesIMSS apoIm = new AportacionesIMSS();
+
+            try
+            {
+                decimal UMA = decimal.Parse(ConfigurationManager.AppSettings["UMA"]);
+                decimal sueldo = Consultar(id).sueldo;
+
+                apoIm.enfermedadMaternidad = (sueldo - (UMA * 3)) * decimal.Parse("0.04");
+                apoIm.invalidezVida = (sueldo) * decimal.Parse("0.0625");
+                apoIm.retiro = (sueldo) * decimal.Parse("0");
+                apoIm.cesantia = (sueldo) * decimal.Parse("0.1125");
+                apoIm.infonavit = (sueldo) * decimal.Parse("0");
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
+            return apoIm;
+        }
+
+
+
+
+
+
+
+
         //public ItemTablaISR CalcularIsr(int id)
         //{
         //    ItemTablaISR ISREntidad = new ItemTablaISR();
@@ -49,43 +108,43 @@ namespace Negocio
         //        ISREntidad.ISR = ISREntidad.ISR - ISREntidad.subsidio;
         //    }
 
-            
+
 
         //    return ISREntidad;
         //}
-        public AportacionesIMSS CalcularIMSS(int id)
-        {
-            AportacionesIMSS apoIm = new AportacionesIMSS();
+        //public AportacionesIMSS CalcularIMSS(int id)
+        //{
+        //    AportacionesIMSS apoIm = new AportacionesIMSS();
 
-            try
-            {
-                //WSAlumno.AportacionesIMSS IMSSService = _wsAlu.CalcularIMSS(id);
-                //string json = JsonConvert.SerializeObject(IMSSService);
-                //apoIm = JsonConvert.DeserializeObject<AportacionesIMSS>(json);
-            }
-            catch (Exception ex)
-            {
-                decimal UMA = decimal.Parse(ConfigurationManager.AppSettings["UMA"]);
-                decimal sueldo = Consultar(id).sueldo;
+        //    try
+        //    {
+        //        //WSAlumno.AportacionesIMSS IMSSService = _wsAlu.CalcularIMSS(id);
+        //        //string json = JsonConvert.SerializeObject(IMSSService);
+        //        //apoIm = JsonConvert.DeserializeObject<AportacionesIMSS>(json);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        decimal UMA = decimal.Parse(ConfigurationManager.AppSettings["UMA"]);
+        //        decimal sueldo = Consultar(id).sueldo;
 
-                apoIm.enfermedadMaternidad = (sueldo - (UMA * 3)) * decimal.Parse("0.04");
-                apoIm.invalidezVida = (sueldo) * decimal.Parse("0.0625");
-                apoIm.retiro = (sueldo) * decimal.Parse("0");
-                apoIm.cesantia = (sueldo) * decimal.Parse("0.1125");
-                apoIm.infonavit = (sueldo) * decimal.Parse("0");
-            }
+        //        apoIm.enfermedadMaternidad = (sueldo - (UMA * 3)) * decimal.Parse("0.04");
+        //        apoIm.invalidezVida = (sueldo) * decimal.Parse("0.0625");
+        //        apoIm.retiro = (sueldo) * decimal.Parse("0");
+        //        apoIm.cesantia = (sueldo) * decimal.Parse("0.1125");
+        //        apoIm.infonavit = (sueldo) * decimal.Parse("0");
+        //    }
 
-            //AportacionesIMSS entidadAportaciones = new AportacionesIMSS();
-            //decimal UMA = decimal.Parse(ConfigurationManager.AppSettings["UMA"]);
-            //decimal sueldo = Consultar(id).sueldo;
+        //    //AportacionesIMSS entidadAportaciones = new AportacionesIMSS();
+        //    //decimal UMA = decimal.Parse(ConfigurationManager.AppSettings["UMA"]);
+        //    //decimal sueldo = Consultar(id).sueldo;
 
-            //entidadAportaciones.enfermedadMaternidad = (sueldo - (UMA * 3)) * decimal.Parse("0.04");
-            //entidadAportaciones.invalidezVida = (sueldo) * decimal.Parse("0.0625");
-            //entidadAportaciones.retiro = (sueldo) * decimal.Parse("0");
-            //entidadAportaciones.cesantia = (sueldo) * decimal.Parse("0.1125");
-            //entidadAportaciones.infonavit = (sueldo) * decimal.Parse("0");
+        //    //entidadAportaciones.enfermedadMaternidad = (sueldo - (UMA * 3)) * decimal.Parse("0.04");
+        //    //entidadAportaciones.invalidezVida = (sueldo) * decimal.Parse("0.0625");
+        //    //entidadAportaciones.retiro = (sueldo) * decimal.Parse("0");
+        //    //entidadAportaciones.cesantia = (sueldo) * decimal.Parse("0.1125");
+        //    //entidadAportaciones.infonavit = (sueldo) * decimal.Parse("0");
 
-            return apoIm;
-        }
+        //    return apoIm;
+        //}
     }
 }

@@ -1,0 +1,8 @@
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\WCFAlumnos\WCFAlumnos\bin\WCFAlumnos.dll.config
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\WCFAlumnos\WCFAlumnos\bin\WCFAlumnos.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\WCFAlumnos\WCFAlumnos\bin\WCFAlumnos.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\WCFAlumnos\WCFAlumnos\obj\Debug\WCFAlumnos.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\WCFAlumnos\WCFAlumnos\obj\Debug\WCFAlumnos.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\WCFAlumnos\WCFAlumnos\obj\Debug\WCFAlumnos.csproj.CopyComplete
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\WCFAlumnos\WCFAlumnos\obj\Debug\WCFAlumnos.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\WCFAlumnos\WCFAlumnos\obj\Debug\WCFAlumnos.pdb

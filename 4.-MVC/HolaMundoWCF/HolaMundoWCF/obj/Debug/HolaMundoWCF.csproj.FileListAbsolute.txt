@@ -1,0 +1,7 @@
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\HolaMundoWCF\HolaMundoWCF\bin\HolaMundoWCF.dll.config
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\HolaMundoWCF\HolaMundoWCF\bin\HolaMundoWCF.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\HolaMundoWCF\HolaMundoWCF\bin\HolaMundoWCF.pdb
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\HolaMundoWCF\HolaMundoWCF\obj\Debug\HolaMundoWCF.csproj.AssemblyReference.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\HolaMundoWCF\HolaMundoWCF\obj\Debug\HolaMundoWCF.csproj.CoreCompileInputs.cache
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\HolaMundoWCF\HolaMundoWCF\obj\Debug\HolaMundoWCF.dll
+C:\Users\Tichs\Documents\PracticasNov\GitPractice\TichNov2024Alex\4.-MVC\HolaMundoWCF\HolaMundoWCF\obj\Debug\HolaMundoWCF.pdb

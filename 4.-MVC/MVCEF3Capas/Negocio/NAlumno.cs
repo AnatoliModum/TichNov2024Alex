@@ -12,16 +12,24 @@ namespace Negocio
 {
     public class NAlumno
     {
-        private readonly EjerciciosTichEntities _context = new EjerciciosTichEntities();
-
-        public NAlumno(EjerciciosTichEntities context)
-        {
-            _context = context;
-        }
+        static private readonly EjerciciosTichEntities _context = new EjerciciosTichEntities();
+        Calculos.WCFAlumnosClient wCFAlumnosClient = new Calculos.WCFAlumnosClient();
+        DRepositorio<Alumnos> repoCon = new Datos.DRepositorio<Alumnos>(_context);
 
         public NAlumno()
         {
         }
+        public IEnumerable<Alumnos> ConsultaInterfaz() => repoCon.Consultar();
+        public Alumnos ConsultaByIdInterfaz(int id) => repoCon.Consultar(id);
+        public void AgregarInterfaz(Alumnos alucno) => repoCon.Agregar(alucno);
+        public void ActualizarInterfaz(Alumnos alucno) => repoCon.Actualizar(alucno);
+        public void EliminarInterfaz(Alumnos alucno) => repoCon.Eliminar(alucno);
+
+
+
+
+
+
 
         public IEnumerable<Alumnos> ConsultaCompleta()
         {
@@ -53,6 +61,15 @@ namespace Negocio
                 _context.Alumnos.Remove(alumno);
                 _context.SaveChanges();
             }
+        }
+
+        public Calculos.AportacionesIMSS CalculoIMSS(int id)
+        {
+            return wCFAlumnosClient.CalcularIMSS(id);
+        }
+        public Calculos.ItemTablaISR CalculoISR(int id)
+        {
+            return wCFAlumnosClient.CalcularISR(id);
         }
     }
 

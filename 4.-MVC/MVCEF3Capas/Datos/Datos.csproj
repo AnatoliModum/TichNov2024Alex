@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DRepositorio.cs" />
     <Compile Include="EjerciciosTichDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -63,6 +64,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EjerciciosTichDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="IRepositorioBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

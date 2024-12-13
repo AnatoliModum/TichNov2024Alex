@@ -15,23 +15,16 @@ namespace Presentacion.Controllers
         NEstados negEsta = new NEstados();
         NEstatus negEstaAlu = new NEstatus();
 
-        // GET: Alumnos
-        public ActionResult Index() => View(negAlu.ConsultaCompleta());
 
-        // GET: Alumnos/Details/5
-        public ActionResult Details(int? id) => View(negAlu.ConsultaCompletaById(id));
 
-        // GET: Alumnos/Create
+        public ActionResult Index() => View(negAlu.ConsultaInterfaz());
+        public ActionResult Details(int id) => View(negAlu.ConsultaByIdInterfaz(id));
         public ActionResult Create()
         {
             ViewBag.idEstadoOrigen = new SelectList(negEsta.Consultar(), "id", "nombre");
             ViewBag.idEstatus = new SelectList(negEstaAlu.Consultar(), "id", "nombre");
             return View();
         }
-
-        // POST: Alumnos/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,nombre,primerApellido,segundoApellido,correo,telefono,fechaNacimiento,curp,sueldo,idEstadoOrigen,idEstatus")] Alumnos alumnos)
@@ -40,7 +33,7 @@ namespace Presentacion.Controllers
             {
                 try
                 {
-                    negAlu.Agregar(alumnos);
+                    negAlu.AgregarInterfaz(alumnos);
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
@@ -54,8 +47,6 @@ namespace Presentacion.Controllers
             ViewBag.idEstatus = new SelectList(negEstaAlu.Consultar(), "id", "nombre");
             return View(alumnos);
         }
-
-        // GET: Alumnos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -69,12 +60,9 @@ namespace Presentacion.Controllers
             }
             ViewBag.idEstadoOrigen = new SelectList(negEsta.Consultar(), "id", "nombre");
             ViewBag.idEstatus = new SelectList(negEstaAlu.Consultar(), "id", "nombre");
+
             return View(alumnos);
         }
-
-        // POST: Alumnos/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,nombre,primerApellido,segundoApellido,correo,telefono,fechaNacimiento,curp,sueldo,idEstadoOrigen,idEstatus")] Alumnos alumnos)
@@ -88,8 +76,6 @@ namespace Presentacion.Controllers
             ViewBag.idEstatus = new SelectList(negEstaAlu.Consultar(), "id", "nombre");
             return View(alumnos);
         }
-
-        // GET: Alumnos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -103,25 +89,22 @@ namespace Presentacion.Controllers
             }
             return View(alumnos);
         }
-
-        // POST: Alumnos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Alumnos alumnos = negAlu.ConsultaCompletaById(id);
-            negAlu.Eliminar(alumnos.id);
+            negAlu.EliminarInterfaz(negAlu.ConsultaByIdInterfaz(id));
             return RedirectToAction("Index");
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        public ActionResult _AportacionesIMSS(int id)
+        {
+            return PartialView(negAlu.CalculoIMSS(id));
+        }
+        public ActionResult _TablaISR(int id)
+        {
+            return PartialView(negAlu.CalculoISR(id));
+        } 
 
     }
 }
